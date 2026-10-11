@@ -1,26 +1,30 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "typecheck": "tsc --noEmit",
+    "cv": "node scripts/generate-cv.mjs"
   },
   "dependencies": {
-    "next": "11.1.2",
-    "next-themes": "^0.0.15",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-icons": "^4.2.0"
+    "next": "^16.4.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
   },
   "devDependencies": {
-    "@types/react": "^17.0.22",
-    "autoprefixer": "^10.3.4",
-    "eslint": "7.32.0",
-    "eslint-config-next": "11.1.2",
-    "postcss": "^8.3.6",
-    "tailwindcss": "^2.2.15"
+    "@react-pdf/renderer": "^4.9.0",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2"
   }
 }
