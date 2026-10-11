@@ -1,0 +1,15 @@
+/* Hidden only when the inline script in the layout has marked <html class="js"> (see lib/theme). */
+@media (prefers-reduced-motion: no-preference) {
+  :global(.js) .reveal {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition:
+      opacity 0.7s var(--ease-out),
+      transform 0.7s var(--ease-out);
+    transition-delay: var(--delay, 0ms);
+  }
+  :global(.js) .reveal[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}

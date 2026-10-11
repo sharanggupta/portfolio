@@ -1,0 +1,15 @@
+.arrowLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.arrow {
+  transition: transform 0.35s var(--ease-out);
+}
+a.arrowLink:hover .arrow,
+a.arrowLink:focus-visible .arrow,
+:global([data-card]):hover .arrow {
+  transform: translateX(6px);
+}

@@ -1,0 +1,22 @@
+/* Anchors must not hide under the floating logo. */
+.section {
+  scroll-margin-top: 5rem;
+}
+
+/* Tinted section with diagonal top and bottom edges. No negative margin of its own:
+   a band must never paint over the content above it. */
+.band {
+  position: relative;
+  padding: calc(var(--space-section) + var(--cut)) 0;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 17%, var(--bg)), color-mix(in srgb, var(--accent) 5%, var(--bg)));
+  clip-path: polygon(0 var(--cut), 100% 0, 100% calc(100% - var(--cut)), 0 100%);
+}
+
+.plain {
+  padding: var(--space-section) 0 0;
+}
+
+/* The section above has room for its diagonal edge in its own padding, so this one may start higher. */
+.tuck {
+  margin-top: calc(var(--cut) * -1);
+}

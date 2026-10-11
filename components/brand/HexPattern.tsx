@@ -1,5 +1,5 @@
-// Generated card header: a field of hexagons, shifted a little differently for every card.
-export default function ProjectArt({ seed }: { seed: number }) {
+/** A field of hexagons, shifted a little differently for every seed. Fills whatever box it is placed in. */
+export default function HexPattern({ seed }: { seed: number }) {
   const offset = (seed * 17) % 40;
   return (
     <svg viewBox="0 0 400 128" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">

@@ -1,0 +1,30 @@
+/* Frosted glass with chamfered corners; the hexagon initials grow when the quote is hovered. */
+.quote {
+  position: relative;
+  padding: 2rem 2.25rem;
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  backdrop-filter: blur(10px);
+  border-left: 3px solid var(--accent);
+  clip-path: polygon(0 0, calc(100% - 2rem) 0, 100% 2rem, 100% 100%, 2rem 100%, 0 calc(100% - 2rem));
+  transition: background 0.4s;
+}
+.quote:hover {
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+}
+
+.avatar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--bg);
+  background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 45%, var(--fg)));
+  clip-path: var(--hex);
+  transition: transform 0.45s var(--ease-out);
+}
+.quote:hover .avatar {
+  transform: scale(1.12);
+}

@@ -1,0 +1,12 @@
+.tag {
+  display: block; /* a block, so a wrapping <li> is exactly as tall as the tag */
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+}
+.strong {
+  color: var(--fg);
+}

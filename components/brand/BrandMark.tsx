@@ -1,6 +1,6 @@
 // The brand mark: a hexagon with a passing test (a check) inside, adapters around it.
 // Decorative by default (aria-hidden); the surrounding text names it.
-export default function HexMark({ size = 28 }: { size?: number }) {
+export default function BrandMark({ size = 28 }: { size?: number }) {
   return (
     <svg
       width={size}

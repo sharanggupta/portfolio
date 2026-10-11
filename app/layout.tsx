@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
-import Header from "@/components/Header";
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
 import JsonLd from "@/components/JsonLd";
-import { LINKS, PERSON, REPO_NAME, SITE_URL } from "@/content/person";
+import { PERSON, SITE_URL } from "@/content/person";
 import { SEO } from "@/content/seo";
 
 // Next.js builds the <head> from this object (title, description, canonical, social tags...).
@@ -56,17 +57,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <div className="progress" aria-hidden="true" />
         <Header />
         {children}
-        <footer className="mt-24 border-t border-border">
-          <div className="mx-auto max-w-5xl px-6 py-10 text-sm text-muted">
-            <p>
-              © {new Date().getFullYear()} {PERSON.name}. Built with Next.js.{" "}
-              <a className="link" href={LINKS.repo} rel="noopener">
-                Source on GitHub ({REPO_NAME})
-              </a>
-              .
-            </p>
-          </div>
-        </footer>
+        <Footer />
       </body>
     </html>
   );

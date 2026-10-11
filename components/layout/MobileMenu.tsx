@@ -2,11 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-type Item = { href: string; label: string; download?: string };
+import type { MenuItem } from "@/content/sections";
 
 // A round floating button, fixed top-right on every screen size, opens a full-screen menu that
 // grows as a hexagon from the button. The same button closes it; Escape works too.
-export default function MobileMenu({ items }: { items: Item[] }) {
+export default function MobileMenu({ items }: { items: readonly MenuItem[] }) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const fabRef = useRef<HTMLButtonElement>(null);
