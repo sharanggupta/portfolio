@@ -1,7 +1,7 @@
 import HexMark from "./HexMark";
 import MobileMenu from "./MobileMenu";
 import ThemeToggle from "./ThemeToggle";
-import { PERSON } from "@/content/site";
+import { PERSON } from "@/content/person";
 
 export const NAV = [
   { href: "#work", label: "Work" },

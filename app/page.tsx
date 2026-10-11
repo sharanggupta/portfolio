@@ -3,19 +3,13 @@ import HexMark from "@/components/HexMark";
 import ProjectArt from "@/components/ProjectArt";
 import Reveal from "@/components/Reveal";
 import Section from "@/components/Section";
-import {
-  LINKS,
-  PERSON,
-  alsoProjects,
-  articles,
-  education,
-  experience,
-  featuredProjects,
-  openSourceFixes,
-  recommendations,
-  skills,
-  type Project,
-} from "@/content/site";
+import { education, skills } from "@/content/background";
+import { experience } from "@/content/experience";
+import { openSourceFixes } from "@/content/open-source";
+import { LINKS, PERSON } from "@/content/person";
+import { alsoProjects, featuredProjects, type Project } from "@/content/projects";
+import { recommendations } from "@/content/recommendations";
+import { articles } from "@/content/writing";
 
 const repoUrl = (repo: string) => `${LINKS.github}/${repo}`;
 const initials = (name: string) =>

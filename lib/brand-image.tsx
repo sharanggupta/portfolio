@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { PERSON } from "@/content/site";
+import { PERSON } from "@/content/person";
 
 // Shared by the social preview images and the Apple icon, so the brand lives in one place.
 export const COLORS = { bg: "#0d1117", fg: "#e6edf3", accent: "#5fc1c5", border: "#30363d" };

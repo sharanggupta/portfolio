@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { PERSON } from "@/content/site";
+import { PERSON } from "@/content/person";
 
 // Served at /manifest.webmanifest: lets phones show a proper name and colours.
 export default function manifest(): MetadataRoute.Manifest {

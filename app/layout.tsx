@@ -3,7 +3,8 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import Header from "@/components/Header";
 import JsonLd from "@/components/JsonLd";
-import { LINKS, PERSON, REPO_NAME, SEO, SITE_URL } from "@/content/site";
+import { LINKS, PERSON, REPO_NAME, SITE_URL } from "@/content/person";
+import { SEO } from "@/content/seo";
 
 // Next.js builds the <head> from this object (title, description, canonical, social tags...).
 export const metadata: Metadata = {

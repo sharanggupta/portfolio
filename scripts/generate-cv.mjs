@@ -1,4 +1,4 @@
-// Builds public/cv.pdf from content/site.ts, the same data the web page uses.
+// Builds public/cv.pdf from the content/ modules, the same data the web page uses.
 // Run with:  npm run cv   (Node 22.18+ reads the .ts data file directly)
 //
 // Layout follows the previous CV: name and tagline on top, a dark contact band,
@@ -18,15 +18,10 @@ import {
   View,
   renderToFile,
 } from "@react-pdf/renderer";
-import {
-  LINKS,
-  PERSON,
-  alsoProjects,
-  education,
-  experience,
-  featuredProjects,
-  skills,
-} from "../content/site.ts";
+import { education, skills } from "../content/background.ts";
+import { experience } from "../content/experience.ts";
+import { LINKS, PERSON } from "../content/person.ts";
+import { alsoProjects, featuredProjects } from "../content/projects.ts";
 
 const SLATE = "#343f56"; // headings and the contact band
 const SLATE_SOFT = "#4a5775"; // role line

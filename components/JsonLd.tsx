@@ -1,4 +1,5 @@
-import { LINKS, PERSON, SEO, SITE_URL } from "@/content/site";
+import { LINKS, PERSON, SITE_URL } from "@/content/person";
+import { SEO } from "@/content/seo";
 
 // Structured data for search engines: who this site is about, and the site itself.
 export default function JsonLd() {
