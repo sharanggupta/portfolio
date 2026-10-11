@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   tagline: { fontSize: 9.5, marginTop: 5 },
   band: { backgroundColor: SLATE, color: "#ffffff", paddingVertical: 7, paddingHorizontal: 34, flexDirection: "row", flexWrap: "wrap" },
   bandItem: { width: "50%", flexDirection: "row", alignItems: "center", paddingVertical: 4 },
-  bandText: { marginLeft: 8, fontSize: 9.5, color: "#ffffff" },
+  bandText: { marginLeft: 8, fontSize: 9.5, color: "#ffffff", textDecoration: "none" },
   columns: { flexDirection: "row", paddingHorizontal: 34, paddingTop: 10 },
   left: { width: "56%", paddingRight: 22 },
   right: { width: "44%" },

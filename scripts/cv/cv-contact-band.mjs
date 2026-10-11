@@ -2,7 +2,7 @@
 // Icons are drawn with SVG shapes, so no image files are needed.
 
 import { createElement as h } from "react";
-import { Circle, Line, Path, Rect, Svg, Text, View } from "@react-pdf/renderer";
+import { Circle, Line, Link, Path, Rect, Svg, Text, View } from "@react-pdf/renderer";
 import { SLATE, styles } from "./cv-styles.mjs";
 
 const WHITE = "#ffffff";
@@ -31,10 +31,11 @@ const letterTile = (letters) =>
     h(Text, { style: { fontSize: 6.5, fontWeight: "bold", color: SLATE } }, letters),
   );
 
-const contactItem = (icon, label) =>
-  h(View, { style: styles.bandItem }, icon, h(Text, { style: styles.bandText }, label));
+// Each contact is a link (no underline, so the band keeps its look).
+const contactItem = (icon, { label, url }) =>
+  h(View, { style: styles.bandItem }, icon, h(Link, { src: url, style: styles.bandText }, label));
 
-/** `contacts` is { email, website, linkedin, github }, each already formatted for display. */
+/** `contacts` is { email, website, linkedin, github }, each { label (as shown), url (where it links) }. */
 export const contactBand = (contacts) =>
   h(
     View,

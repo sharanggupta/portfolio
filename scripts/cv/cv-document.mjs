@@ -112,10 +112,10 @@ export function buildCvDocument(content) {
         text(styles.tagline, person.tagline),
       ),
       contactBand({
-        email: person.email,
-        website: new URL(siteUrl).host,
-        linkedin: withoutScheme(links.linkedin),
-        github: withoutScheme(links.github),
+        email: { label: person.email, url: person.mailto },
+        website: { label: new URL(siteUrl).host, url: siteUrl },
+        linkedin: { label: withoutScheme(links.linkedin), url: links.linkedin },
+        github: { label: withoutScheme(links.github), url: links.github },
       }),
       h(
         View,
