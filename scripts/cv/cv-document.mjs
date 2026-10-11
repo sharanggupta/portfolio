@@ -2,7 +2,7 @@
 // `generate-cv.mjs` passes the content in and writes the result to public/cv.pdf.
 
 import { createElement as h } from "react";
-import { Document, Page, Text, View } from "@react-pdf/renderer";
+import { Document, Link, Page, Text, View } from "@react-pdf/renderer";
 import { contactBand } from "./cv-contact-band.mjs";
 import { styles } from "./cv-styles.mjs";
 import { dash, firstSentence, withoutScheme } from "./cv-text.mjs";
@@ -33,8 +33,15 @@ const jobEntry = (job) =>
     bullets: job.highlights,
   });
 
+// Education sits in the right column, which has no timeline line, so its entries have no tick.
 const educationEntry = (item) =>
-  timelineEntry({ key: item.qualification, title: item.qualification, company: item.institution, period: item.period });
+  h(
+    View,
+    { key: item.qualification, style: styles.project, wrap: false },
+    text(styles.title, item.qualification),
+    text(styles.company, item.institution),
+    h(View, { style: styles.metaRow }, text(styles.meta, dash(item.period))),
+  );
 
 const projectEntry = (project) =>
   h(
@@ -44,16 +51,15 @@ const projectEntry = (project) =>
     text(styles.projectText, firstSentence(project.description)),
   );
 
-const leftColumn = ({ experience, education }) =>
+const leftColumn = ({ experience }) =>
   h(
     View,
     { style: styles.left },
     text(styles.heading, "Work experience"),
     ...experience.map(jobEntry),
-    h(View, { style: { marginTop: 4 } }, text(styles.heading, "Education"), ...education.map(educationEntry)),
   );
 
-const rightColumn = ({ skills, projects, writingNote }) =>
+const rightColumn = ({ skills, projects, education, writingNote, mediumUrl, mediumLabel }) =>
   h(
     View,
     { style: styles.right },
@@ -61,12 +67,19 @@ const rightColumn = ({ skills, projects, writingNote }) =>
     h(View, { style: styles.chips }, ...skills.flatMap((group) => group.items).map((item) => text(styles.chip, item))),
     text(styles.heading, "Projects"),
     ...projects.map(projectEntry),
-    h(View, { style: styles.section }, text(styles.heading, "Writing"), text(styles.projectText, writingNote)),
+    h(
+      View,
+      { style: styles.section },
+      text(styles.heading, "Writing"),
+      text(styles.projectText, writingNote),
+      h(Link, { src: mediumUrl, style: styles.link }, mediumLabel),
+    ),
+    h(View, { style: styles.section }, text(styles.heading, "Education"), ...education.map(educationEntry)),
   );
 
 /**
  * @param content what the CV says: person, links, siteUrl, experience, education, skills,
- *   projects (featured then also) and writingNote.
+ *   projects (featured then also) and writingNote (the series sentence; the Medium link is added from `links`).
  */
 export function buildCvDocument(content) {
   const { person, links, siteUrl } = content;
@@ -89,7 +102,12 @@ export function buildCvDocument(content) {
         linkedin: withoutScheme(links.linkedin),
         github: withoutScheme(links.github),
       }),
-      h(View, { style: styles.columns }, leftColumn(content), rightColumn(content)),
+      h(
+        View,
+        { style: styles.columns },
+        leftColumn(content),
+        rightColumn({ ...content, mediumUrl: links.medium, mediumLabel: `Medium: ${withoutScheme(links.medium)}` }),
+      ),
     ),
   );
 }

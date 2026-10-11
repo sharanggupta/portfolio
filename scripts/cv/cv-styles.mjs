@@ -36,4 +36,5 @@ export const styles = StyleSheet.create({
   projectName: { fontSize: 9.4 },
   projectText: { fontSize: 7.9, color: "#333333" },
   section: { marginBottom: 8 },
+  link: { fontSize: 7.9, color: SLATE, textDecoration: "underline", marginTop: 3 },
 });

@@ -16,7 +16,7 @@ import { buildCvDocument } from "./cv/cv-document.mjs";
 
 const OUTPUT_PATH = join("public", CV.path);
 
-const writingNote = `${seriesDescription(SERIES_TITLE)}: ${withoutScheme(LINKS.medium)}`;
+const writingNote = `${seriesDescription(SERIES_TITLE)}.`;
 
 const document = buildCvDocument({
   person: PERSON,
