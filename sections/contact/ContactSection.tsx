@@ -11,10 +11,12 @@ const ART_SEED = 9;
 /** The closing panel. Its heading is bespoke (centred, larger), so it does not use Section. */
 export default function ContactSection() {
   return (
-    <section id={SECTION.contact} aria-labelledby="contact-heading" className={styles.section}>
+    <section id={SECTION.contact} aria-labelledby="contact-heading" className="scroll-mt-20 pt-section">
       <Container>
-        <div className={styles.panel}>
-          <div className={styles.art} aria-hidden="true">
+        <div
+          className={`${styles.panel} relative overflow-hidden rounded-[1.25rem] border border-border px-5 py-12 text-center sm:rounded-3xl sm:px-6 sm:py-[4.5rem]`}
+        >
+          <div className={`${styles.art} absolute inset-0 text-accent opacity-[0.22] [&_svg]:size-full`} aria-hidden="true">
             <HexPattern seed={ART_SEED} />
           </div>
           <div className="relative">
@@ -34,7 +36,11 @@ export default function ContactSection() {
             <ul className="mt-8 flex flex-wrap justify-center gap-3" aria-label="Profiles">
               {PROFILES.map((profile) => (
                 <li key={profile.label}>
-                  <a className={styles.pill} href={profile.href} rel="me">
+                  <a
+                    className="inline-block rounded-full border border-border px-[1.1rem] py-[0.45rem] font-medium text-fg transition duration-300 hover:-translate-y-0.5 hover:border-accent hover:text-accent"
+                    href={profile.href}
+                    rel="me"
+                  >
                     {profile.label}
                   </a>
                 </li>

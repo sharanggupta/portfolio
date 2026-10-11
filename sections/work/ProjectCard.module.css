@@ -1,32 +1,12 @@
-/* The hexagon-pattern header. It zooms a little when the card (marked data-card) is hovered. */
+/* The hexagon-pattern header. Its pattern zooms a little when the card (marked data-card) is hovered. */
 .art {
-  position: relative;
-  height: 8rem;
-  overflow: hidden;
   background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 30%, #0d1117));
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 }
 .art svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
   transition: transform 0.7s var(--ease-out);
 }
 :global([data-card]):hover .art svg,
 :global([data-card]):focus-within .art svg {
   transform: scale(1.1) translateX(-2%);
-}
-
-.label {
-  position: absolute;
-  left: 1.25rem;
-  bottom: 1.25rem;
-  padding: 0.35rem 0.8rem;
-  border-radius: 0.25rem;
-  color: #e6edf3;
-  font-weight: 600;
-  font-size: 1.05rem;
-  background: rgb(13 17 23 / 0.74);
-  backdrop-filter: blur(6px);
 }

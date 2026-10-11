@@ -20,7 +20,10 @@ const ADAPTERS: ReadonlyArray<readonly [number, number]> = [
 /** Decorative hero art: overlapping translucent hexagons with a passing test at the core. */
 export default function HexCluster() {
   return (
-    <div className={styles.art} aria-hidden="true">
+    <div
+      className={`${styles.art} pointer-events-none absolute -right-10 top-18 hidden w-68 text-accent opacity-60 md:block lg:-right-8 lg:top-12 lg:w-[min(34rem,46vw)] lg:opacity-100`}
+      aria-hidden="true"
+    >
       <svg viewBox="0 0 400 400" width="100%" focusable="false">
         <defs>
           <linearGradient id="hex-fill" x1="0" y1="0" x2="1" y2="1">

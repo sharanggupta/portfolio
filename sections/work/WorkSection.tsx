@@ -1,6 +1,6 @@
 import Kicker from "@/components/ui/Kicker";
-import Reveal, { STAGGER_MS } from "@/components/ui/Reveal";
-import Section from "@/components/ui/Section";
+import Reveal, { STAGGER_MS } from "@/components/ui/Reveal/Reveal";
+import Section from "@/components/ui/Section/Section";
 import { SECTION, sectionKicker } from "@/content/sections";
 import { alsoProjects, featuredProjects, type Project } from "@/content/projects";
 import ProjectCard from "./ProjectCard";

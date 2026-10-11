@@ -9,9 +9,9 @@ import styles from "./ProjectCard.module.css";
 export default function ProjectCard({ project, artSeed }: { project: Project; artSeed: number }) {
   return (
     <Card>
-      <div className={styles.art} aria-hidden="true">
+      <div className={`${styles.art} relative h-32 overflow-hidden [&_svg]:absolute [&_svg]:inset-0 [&_svg]:size-full`} aria-hidden="true">
         <HexPattern seed={artSeed} />
-        <span className={styles.label}>{project.status ?? project.tags[0]}</span>
+        <span className="absolute bottom-5 left-5 rounded-sm bg-[rgb(13_17_23/0.74)] px-[0.8rem] py-[0.35rem] text-[1.05rem] font-semibold text-[#e6edf3] backdrop-blur-[6px]">{project.status ?? project.tags[0]}</span>
       </div>
       <div className="flex flex-1 flex-col p-6 pt-4">
         <h3 className="text-lg font-semibold">

@@ -1,5 +1,5 @@
-import Reveal from "@/components/ui/Reveal";
-import Section from "@/components/ui/Section";
+import Reveal from "@/components/ui/Reveal/Reveal";
+import Section from "@/components/ui/Section/Section";
 import { experience } from "@/content/experience";
 import { SECTION, sectionKicker } from "@/content/sections";
 import styles from "./ExperienceSection.module.css";

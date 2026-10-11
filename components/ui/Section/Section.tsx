@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
-import Container from "./Container";
-import Kicker from "./Kicker";
+import Container from "@/components/ui/Container";
+import Kicker from "@/components/ui/Kicker";
+import { cx } from "@/lib/classNames";
 import styles from "./Section.module.css";
 
 /**
@@ -25,7 +26,8 @@ export default function Section({
   tuck?: boolean;
   children: ReactNode;
 }) {
-  const classes = [styles.section, band ? styles.band : styles.plain, tuck ? styles.tuck : ""].join(" ");
+  // Anchors must not hide under the floating logo, hence scroll-mt-20.
+  const classes = cx("relative scroll-mt-20", band ? styles.band : "pt-section", tuck && "-mt-cut");
   return (
     <section id={id} aria-labelledby={`${id}-heading`} className={classes}>
       <Container>

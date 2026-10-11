@@ -19,11 +19,6 @@
   pointer-events: none;
 }
 
-/* Above the dotted texture and the hexagon art, which come earlier and are positioned too. */
-.content {
-  position: relative;
-}
-
 @keyframes slide-from-left {
   from {
     opacity: 0;

@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <section aria-label="Introduction" className={styles.hero}>
       <HexCluster />
-      <Container className={styles.content}>
+      <Container className="relative">
         <div className={`${styles.enter} flex items-center gap-3 text-accent`} style={enterAfter(0)}>
           <BrandMark size={40} />
           <Kicker>{PERSON.focus}</Kicker>

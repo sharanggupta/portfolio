@@ -1,6 +1,6 @@
 import Panel from "@/components/ui/Panel";
 import Kicker from "@/components/ui/Kicker";
-import Section from "@/components/ui/Section";
+import Section from "@/components/ui/Section/Section";
 import Tag from "@/components/ui/Tag";
 import { education, skills } from "@/content/background";
 import { SECTION, sectionKicker } from "@/content/sections";

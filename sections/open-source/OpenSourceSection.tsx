@@ -1,6 +1,6 @@
 import ArrowLink from "@/components/ui/ArrowLink";
-import Reveal, { STAGGER_MS } from "@/components/ui/Reveal";
-import Section from "@/components/ui/Section";
+import Reveal, { STAGGER_MS } from "@/components/ui/Reveal/Reveal";
+import Section from "@/components/ui/Section/Section";
 import TextLink from "@/components/ui/TextLink";
 import { openSourceFixes } from "@/content/open-source";
 import { LINKS } from "@/content/person";

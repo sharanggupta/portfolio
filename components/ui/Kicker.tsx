@@ -1,15 +1,19 @@
 import type { ReactNode } from "react";
-import styles from "./Kicker.module.css";
+import { cx } from "@/lib/classNames";
 
 /** The small uppercase label above a heading. */
 export default function Kicker({
   as: Element = "p",
-  className = "",
+  className,
   children,
 }: {
   as?: "p" | "h3" | "span";
   className?: string;
   children: ReactNode;
 }) {
-  return <Element className={`${styles.kicker} ${className}`}>{children}</Element>;
+  return (
+    <Element className={cx("font-mono text-[0.8rem] font-semibold uppercase tracking-[0.32em] text-accent", className)}>
+      {children}
+    </Element>
+  );
 }

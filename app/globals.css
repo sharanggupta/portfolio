@@ -45,6 +45,10 @@
   --color-fg: var(--fg);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
+  --ease-brand: var(--ease-out);
+  --spacing-section: var(--space-section);
+  --spacing-cut: var(--cut);
+  --shadow-lift: 0 22px 44px -22px color-mix(in srgb, var(--accent) 60%, transparent);
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 }
