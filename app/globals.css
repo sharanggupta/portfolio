@@ -1,1 +1,89 @@
 @import "tailwindcss";
+
+/*
+  Colours live in CSS variables, one set per theme, taken from the GitHub and LinkedIn banners.
+  - With no saved choice and no JavaScript, the browser's prefers-color-scheme decides.
+  - The small script in layout.tsx sets data-theme on <html> before first paint, so a saved
+    choice never flashes the wrong theme.
+*/
+:root {
+  --bg: #ffffff;
+  --surface: #f4f7f8;
+  --border: #d0d7de;
+  --fg: #1c2227;
+  --muted: #4b5863;
+  --accent: #0f6e73;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --fg: #e6edf3;
+    --muted: #9aa7b2;
+    --accent: #5fc1c5;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --border: #30363d;
+  --fg: #e6edf3;
+  --muted: #9aa7b2;
+  --accent: #5fc1c5;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+html {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* One visible focus style for every keyboard-focusable thing. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Section anchors should not hide under the sticky header. */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+a.link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+a.link:hover {
+  text-decoration-thickness: 2px;
+}
