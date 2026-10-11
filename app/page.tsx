@@ -77,7 +77,8 @@ export default function Home() {
           <p className="hero-sub mt-6 max-w-xl text-3xl font-medium leading-tight sm:text-4xl">
             {PERSON.tagline}
           </p>
-          <p className="hero-sub mt-6 max-w-xl text-lg text-muted">{PERSON.intro}</p>
+          {/* No entrance animation here: the first readable text must paint immediately. */}
+          <p className="mt-6 max-w-xl text-lg text-muted">{PERSON.intro}</p>
           <p className="hero-sub mt-2 text-muted">{PERSON.location}.</p>
           <ul className="hero-sub mt-6 flex flex-wrap gap-x-6 gap-y-2">
             <li>
