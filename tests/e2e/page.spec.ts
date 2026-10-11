@@ -1,4 +1,4 @@
-import AxeBuilder from "@axe-core/playwright";
+import { AxeBuilder } from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 test.describe("the page", () => {
@@ -11,16 +11,15 @@ test.describe("the page", () => {
       links.map((link) => link.getAttribute("href")!.slice(1)),
     );
     expect(menuTargets.length).toBeGreaterThanOrEqual(6);
-    for (const id of menuTargets) await expect(page.locator(`#${id}`)).toHaveCount(1);
+    await Promise.all(menuTargets.map((id) => expect(page.locator(`#${id}`)).toHaveCount(1)));
   });
 
   test("shows all its content without JavaScript", async ({ browser }) => {
     const context = await browser.newContext({ javaScriptEnabled: false });
     const page = await context.newPage();
     await page.goto("/");
-    for (const heading of ["Selected work", "Where I have worked", "What colleagues say", "Get in touch"]) {
-      await expect(page.getByRole("heading", { name: heading })).toBeVisible();
-    }
+    const headings = ["Selected work", "Where I have worked", "What colleagues say", "Get in touch"];
+    await Promise.all(headings.map((name) => expect(page.getByRole("heading", { name })).toBeVisible()));
     await context.close();
   });
 
