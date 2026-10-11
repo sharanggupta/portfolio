@@ -27,8 +27,12 @@ export const articles: Article[] = [
 
 const NUMBER_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
 
-/** For example "A four-part series, each part with a working app." The count follows `articles`. */
+/** The number of articles in words, for example "four". It follows `articles`. */
+export function articleCountWord(): string {
+  return NUMBER_WORDS[articles.length] ?? String(articles.length);
+}
+
+/** For example "A four-part series, each part with a working app." */
 export function seriesIntro(): string {
-  const count = NUMBER_WORDS[articles.length] ?? String(articles.length);
-  return `A ${count}-part series, each part with a working app.`;
+  return `A ${articleCountWord()}-part series, each part with a working app.`;
 }
