@@ -41,6 +41,7 @@ const educationEntry = (item) =>
     text(styles.title, item.qualification),
     text(styles.company, item.institution),
     h(View, { style: styles.metaRow }, text(styles.meta, dash(item.period))),
+    ...(item.dissertation ? [h(Link, { src: item.dissertation.url, style: styles.link }, item.dissertation.label)] : []),
   );
 
 const projectEntry = (project) =>

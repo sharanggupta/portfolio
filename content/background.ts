@@ -1,15 +1,23 @@
 // Education and skills.
 
+/** The MSc dissertation, published open access (CC BY 4.0). The DOI always points to the latest version. */
+export const DISSERTATION = {
+  label: "Dissertation: Modern Serverless Web Application Architecture",
+  url: "https://doi.org/10.5281/zenodo.23299984",
+} as const;
+
 export const education = [
   {
     qualification: "MSc Computer Science (Distinction)",
     institution: "University of Southampton",
     period: "2020 to 2021",
+    dissertation: DISSERTATION,
   },
   {
     qualification: "BTech Computer Science and Engineering",
     institution: "Symbiosis Institute of Technology, Pune",
     period: "2014 to 2018",
+    dissertation: undefined,
   },
 ] as const;
 
