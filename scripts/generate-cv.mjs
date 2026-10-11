@@ -6,7 +6,7 @@
 import { mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { renderToFile } from "@react-pdf/renderer";
-import { education, skills } from "../content/background.ts";
+import { education, initiatives, skills } from "../content/background.ts";
 import { experience } from "../content/experience.ts";
 import { CV, LINKS, PERSON, SITE_URL } from "../content/person.ts";
 import { alsoProjects, featuredProjects } from "../content/projects.ts";
@@ -23,6 +23,7 @@ const document = buildCvDocument({
   siteUrl: SITE_URL,
   experience,
   education,
+  initiatives,
   skills,
   projects: [...featuredProjects, ...alsoProjects],
   writingNote,

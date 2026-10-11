@@ -19,3 +19,15 @@ export const skills = [
   { group: "Data", items: ["MySQL", "Couchbase", "MongoDB"] },
   { group: "Practice", items: ["TDD", "JUnit", "Clean code", "SOLID", "Code review"] },
 ] as const;
+
+/** Extra initiative shown on the CV only, not on the web page. */
+export const initiatives = [
+  {
+    title: "Smart India Hackathon 2018, Grand Finale",
+    detail: "Built a solution to calculate trade margins for businesses (Ministry of Statistics and Programme Implementation problem statement).",
+  },
+  {
+    title: "Taught Android app development",
+    detail: "To second-year MTech students at Symbiosis Institute of Technology (Mar-Apr 2017), as part of their IoT course.",
+  },
+] as const;

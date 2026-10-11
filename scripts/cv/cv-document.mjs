@@ -59,7 +59,15 @@ const leftColumn = ({ experience }) =>
     ...experience.map(jobEntry),
   );
 
-const rightColumn = ({ skills, projects, education, writingNote, mediumUrl, mediumLabel }) =>
+const initiativeEntry = (item) =>
+  h(
+    View,
+    { key: item.title, style: styles.project, wrap: false },
+    text(styles.projectName, item.title),
+    text(styles.projectText, item.detail),
+  );
+
+const rightColumn = ({ skills, projects, education, initiatives, writingNote, mediumUrl, mediumLabel }) =>
   h(
     View,
     { style: styles.right },
@@ -75,11 +83,12 @@ const rightColumn = ({ skills, projects, education, writingNote, mediumUrl, medi
       h(Link, { src: mediumUrl, style: styles.link }, mediumLabel),
     ),
     h(View, { style: styles.section }, text(styles.heading, "Education"), ...education.map(educationEntry)),
+    h(View, { style: styles.section }, text(styles.heading, "Initiative"), ...initiatives.map(initiativeEntry)),
   );
 
 /**
  * @param content what the CV says: person, links, siteUrl, experience, education, skills,
- *   projects (featured then also) and writingNote (the series sentence; the Medium link is added from `links`).
+ *   projects (featured then also), initiatives and writingNote (the series sentence; the Medium link is added from `links`).
  */
 export function buildCvDocument(content) {
   const { person, links, siteUrl } = content;
