@@ -87,3 +87,352 @@ a.link {
 a.link:hover {
   text-decoration-thickness: 2px;
 }
+
+/* ==========================================================================
+   Design layer
+   Rhythm: spacing in steps of 0.5rem (8px grid), generous section padding,
+   one accent colour, a short type scale. Motion is subtle and optional.
+   ========================================================================== */
+
+:root {
+  --space-section: 8rem;
+  --cut: 3.5rem; /* height of the diagonal cuts */
+  --hex: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (max-width: 40rem) {
+  :root {
+    --space-section: 5rem;
+    --cut: 2rem;
+  }
+}
+
+/* Small uppercase label above headings. */
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ---- Hero: diagonal cut, gradient glow, dotted texture ---- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 6.5rem 0 calc(var(--space-section) + var(--cut));
+  background:
+    radial-gradient(48rem 26rem at 88% 8%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 62%),
+    linear-gradient(165deg, color-mix(in srgb, var(--accent) 13%, var(--bg)), var(--bg) 72%);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut)), 0 100%);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--border) 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: linear-gradient(to right, transparent 25%, #000);
+  mask-image: linear-gradient(to right, transparent 25%, #000);
+  pointer-events: none;
+}
+.hero > * {
+  position: relative;
+}
+
+/* ---- Bands: tinted sections with diagonal top and bottom edges ---- */
+.band {
+  position: relative;
+  padding: calc(var(--space-section) + var(--cut)) 0;
+  margin-block: calc(var(--cut) * -1);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 17%, var(--bg)), color-mix(in srgb, var(--accent) 5%, var(--bg)));
+  clip-path: polygon(0 var(--cut), 100% 0, 100% calc(100% - var(--cut)), 0 100%);
+}
+.plain {
+  padding: var(--space-section) 0 0;
+}
+
+/* ---- Navigation link: a line that sweeps in ---- */
+.navlink {
+  position: relative;
+  padding-block: 0.25rem;
+}
+.navlink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease-out);
+}
+.navlink:hover::after,
+.navlink:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* ---- Project card: hexagon-pattern header, lift on hover ---- */
+.project {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  backdrop-filter: blur(6px);
+  transition:
+    transform 0.4s var(--ease-out),
+    box-shadow 0.4s var(--ease-out),
+    border-color 0.4s;
+}
+.project:hover,
+.project:focus-within {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 22px 44px -22px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+.project-art {
+  position: relative;
+  height: 8rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 30%, #0d1117));
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+}
+.project-art svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s var(--ease-out);
+}
+.project:hover .project-art svg,
+.project:focus-within .project-art svg {
+  transform: scale(1.1) translateX(-2%);
+}
+.project-label {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 0.25rem;
+  color: #e6edf3;
+  font-weight: 600;
+  font-size: 1.05rem;
+  background: rgb(13 17 23 / 0.74);
+  backdrop-filter: blur(6px);
+}
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+}
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.cta span[aria-hidden] {
+  transition: transform 0.35s var(--ease-out);
+}
+.project:hover .cta span[aria-hidden],
+.cta:hover span[aria-hidden],
+.cta:focus-visible span[aria-hidden] {
+  transform: translateX(6px);
+}
+
+/* ---- Recommendation: frosted glass with chamfered corners, hexagon initials ---- */
+.quote {
+  position: relative;
+  padding: 2rem 2.25rem;
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  backdrop-filter: blur(10px);
+  border-left: 3px solid var(--accent);
+  clip-path: polygon(0 0, calc(100% - 2rem) 0, 100% 2rem, 100% 100%, 2rem 100%, 0 calc(100% - 2rem));
+  transition: background 0.4s;
+}
+.quote:hover {
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+}
+.hex-avatar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--bg);
+  background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 45%, var(--fg)));
+  clip-path: var(--hex);
+  transition: transform 0.45s var(--ease-out);
+}
+.quote:hover .hex-avatar {
+  transform: scale(1.12);
+}
+
+/* ---- Experience timeline: hexagon markers on a line ---- */
+.timeline {
+  position: relative;
+  padding-left: 2.25rem;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.6rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+.timeline > li {
+  position: relative;
+}
+.timeline > li::before {
+  content: "";
+  position: absolute;
+  left: -2.25rem;
+  top: 0.3rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: var(--accent);
+  clip-path: var(--hex);
+}
+
+/* ---- Hero hexagon cluster ---- */
+.hero-art {
+  position: absolute;
+  right: -2rem;
+  top: 3rem;
+  width: min(34rem, 46vw);
+  color: var(--accent);
+  pointer-events: none;
+}
+
+/* ---- Full-screen menu (phones): a hexagon that opens from the button ---- */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f6e73, #0d1117 85%);
+  visibility: hidden;
+  clip-path: polygon(
+    calc(100% - 2.5rem) 2.5rem,
+    calc(100% - 2.5rem) 2.5rem,
+    calc(100% - 2.5rem) 2.5rem,
+    calc(100% - 2.5rem) 2.5rem,
+    calc(100% - 2.5rem) 2.5rem,
+    calc(100% - 2.5rem) 2.5rem
+  );
+  transition:
+    clip-path 0.7s var(--ease-out),
+    visibility 0s linear 0.7s;
+}
+.menu-overlay[data-open="true"] {
+  visibility: visible;
+  clip-path: polygon(50% -70%, 175% 18%, 175% 82%, 50% 170%, -75% 82%, -75% 18%);
+  transition: clip-path 0.7s var(--ease-out);
+}
+.menu-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  font-size: clamp(1.5rem, 7vw, 2.25rem);
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #e6edf3;
+}
+.menu-link:hover {
+  color: #5fc1c5;
+}
+
+/* ---- Motion (only for people who have not asked for less) ---- */
+@keyframes slide-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-2.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.6rem);
+  }
+}
+@keyframes menu-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-kicker,
+  .hero-title,
+  .hero-sub {
+    animation: slide-from-left 0.9s var(--ease-out) both;
+  }
+  .hero-title {
+    animation-delay: 0.1s;
+  }
+  .hero-sub {
+    animation-delay: 0.2s;
+  }
+  .hero-art svg {
+    animation: float 9s ease-in-out infinite;
+  }
+  .menu-overlay[data-open="true"] .menu-link {
+    animation: menu-item-in 0.5s var(--ease-out) both;
+  }
+  .menu-overlay[data-open="true"] li:nth-child(2) .menu-link { animation-delay: 0.08s; }
+  .menu-overlay[data-open="true"] li:nth-child(3) .menu-link { animation-delay: 0.16s; }
+  .menu-overlay[data-open="true"] li:nth-child(4) .menu-link { animation-delay: 0.24s; }
+  .menu-overlay[data-open="true"] li:nth-child(5) .menu-link { animation-delay: 0.32s; }
+
+  /* Scroll reveal: hidden only when JavaScript has marked <html class="js">. */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition:
+      opacity 0.7s var(--ease-out),
+      transform 0.7s var(--ease-out);
+    transition-delay: var(--delay, 0ms);
+  }
+  .js .reveal.in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-overlay,
+  .menu-overlay[data-open="true"] {
+    transition: none;
+  }
+}

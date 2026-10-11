@@ -42,7 +42,7 @@ export const viewport: Viewport = {
 };
 
 // Runs before the page paints: apply a saved theme, otherwise follow the operating system.
-const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark"){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t}catch(e){}})();`;
+const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark"){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add("js")})();`;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -54,8 +54,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <Header />
         {children}
-        <footer className="mt-16 border-t border-border">
-          <div className="mx-auto max-w-3xl px-4 py-8 text-sm text-muted">
+        <footer className="mt-24 border-t border-border">
+          <div className="mx-auto max-w-5xl px-6 py-10 text-sm text-muted">
             <p>
               © {new Date().getFullYear()} {PERSON.name}. Built with Next.js.{" "}
               <a className="link" href={LINKS.repo} rel="noopener">

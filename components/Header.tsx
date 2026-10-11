@@ -1,4 +1,5 @@
 import HexMark from "./HexMark";
+import MobileMenu from "./MobileMenu";
 import ThemeToggle from "./ThemeToggle";
 import { PERSON } from "@/content/site";
 
@@ -12,25 +13,26 @@ const NAV = [
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-10 border-b border-border bg-bg/90 backdrop-blur">
-      <div className="mx-auto flex max-w-3xl flex-wrap items-center gap-x-5 gap-y-2 px-4 py-3">
+    <header className="sticky top-0 z-40 border-b border-border bg-bg/85 backdrop-blur">
+      <div className="mx-auto flex max-w-5xl items-center gap-5 px-6 py-3">
         <a href="#top" className="flex items-center gap-2 font-semibold text-accent">
           <HexMark size={26} />
           <span className="text-fg">{PERSON.name}</span>
         </a>
-        <nav aria-label="Sections" className="order-3 w-full sm:order-none sm:ml-auto sm:w-auto">
-          <ul className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted">
+        <nav aria-label="Sections" className="ml-auto hidden sm:block">
+          <ul className="flex gap-6 text-sm text-muted">
             {NAV.map((item) => (
               <li key={item.href}>
-                <a href={item.href} className="hover:text-accent">
+                <a href={item.href} className="navlink hover:text-fg">
                   {item.label}
                 </a>
               </li>
             ))}
           </ul>
         </nav>
-        <div className="ml-auto sm:ml-0">
+        <div className="ml-auto flex items-center gap-3 sm:ml-0">
           <ThemeToggle />
+          <MobileMenu items={NAV} />
         </div>
       </div>
     </header>

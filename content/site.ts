@@ -36,6 +36,7 @@ export type Project = {
   repo: string; // repository name under github.com/sharanggupta
   status?: string;
   description: string;
+  tags: string[]; // technologies, taken from each repository's README
   liveUrl?: string;
 };
 
@@ -43,6 +44,7 @@ export const featuredProjects: Project[] = [
   {
     name: "Orderly",
     repo: "orderly",
+    tags: ["Java 21", "Maven", "Hexagonal architecture", "TDD"],
     status: "Work in progress",
     description:
       "A learning project: moving from controller-service-repository habits to a hexagonal design, one failing test at a time. Each layer is a Maven module that lists only what it may depend on, so an inward import from the domain is a compile error, not a review comment. The domain is built and the application layer has started; the REST API, database and Spring Boot application are planned.",
@@ -50,18 +52,21 @@ export const featuredProjects: Project[] = [
   {
     name: "Flight search",
     repo: "flight-search",
+    tags: ["Java 21", "Spring Boot 3.4", "Hexagonal architecture", "GitHub Actions"],
     description:
       "A Spring Boot REST API for searching flights, built test-first with hexagonal architecture. The domain and application code is plain Java; all framework code (Spring, JPA, REST) sits outside and depends inward, never the other way. Java 21, Spring Boot 3.4, with CI on GitHub Actions.",
   },
   {
     name: "EazyBank",
     repo: "eazybank",
+    tags: ["Spring Boot", "Kubernetes", "PostgreSQL", "GitHub Actions"],
     description:
       "A banking application split into four Spring Boot microservices: a gateway as the single entry point, and account, card and loan services, each with its own PostgreSQL database. Runs on Kubernetes, with GitHub Actions workflows to build and deploy each service, and an observability stack (Prometheus, Grafana, Loki and Tempo) for metrics, logs and traces.",
   },
   {
     name: "OAuth2 product",
     repo: "oauth2product",
+    tags: ["Spring Boot", "OAuth2", "Docker Compose", "TDD"],
     description:
       "An OAuth2 resource server and client with Spring Boot, built test-first and run end to end with Docker Compose. The article series below follows this code.",
   },
@@ -71,11 +76,13 @@ export const alsoProjects: Project[] = [
   {
     name: "Batch data migration",
     repo: "batch-data-migration",
+    tags: ["Spring Batch", "MongoDB", "PostgreSQL"],
     description: "Data migration from NoSQL to SQL using Spring Batch.",
   },
   {
     name: "Thiasil",
     repo: "thiasil",
+    tags: ["Next.js", "React", "Tailwind CSS", "Redis"],
     liveUrl: "https://www.thiasil.com/",
     description:
       "Website for Thia Glass Works: a Next.js application with a product catalogue, admin panel and PDF catalogue.",
@@ -150,6 +157,8 @@ export type Job = {
   period: string;
   location: string;
   highlights: string[];
+  // Extra impact lines used only in the CV PDF (approved by the user), not on the web page.
+  cvHighlights?: string[];
 };
 
 // Copied from the live LinkedIn experience page (2026-10-11).
@@ -194,6 +203,10 @@ export const experience: Job[] = [
     highlights: [
       "Responsible for building data pipelines across multiple web sources like BSE, NSE and electoral rolls via web-scraping using python",
     ],
+    cvHighlights: [
+      "Created over 300 web crawlers, harvesting millions of data points, thus creating end to end data pipelines for consumption",
+      "Introduced in-memory download and re-upload of scraped PDFs reducing disk memory usage to a fraction of original",
+    ],
   },
   {
     title: "Web Developer",
@@ -208,6 +221,10 @@ export const experience: Job[] = [
     period: "Jan 2017 to Jun 2017",
     location: "Pune, India",
     highlights: [],
+    cvHighlights: [
+      "Developed a new Non-PE files harvester, to gather 1 million files to whitelist, met the target within 3 months",
+      "Developed a new crawler in record time, for a time-sensitive project involving a lawsuit threat",
+    ],
   },
 ];
 
