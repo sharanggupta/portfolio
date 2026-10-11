@@ -16,7 +16,7 @@ export const PERSON = {
   location: "Bournemouth, England",
   locality: "Bournemouth",
   country: "GB",
-  email: "sharanggupta1996@gmail.com",
+  email: "sharang@sharanggupta.dev",
   phoneDisplay: "+44 7563 566755",
   phoneHref: "tel:+447563566755",
 } as const;
