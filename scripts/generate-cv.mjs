@@ -6,17 +6,16 @@
 import { mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { renderToFile } from "@react-pdf/renderer";
-import { education, skills } from "../content/background.ts";
+import { education, initiatives, skills } from "../content/background.ts";
 import { experience } from "../content/experience.ts";
 import { CV, LINKS, PERSON, SITE_URL } from "../content/person.ts";
 import { alsoProjects, featuredProjects } from "../content/projects.ts";
-import { SERIES_TITLE, seriesDescription } from "../content/writing.ts";
-import { withoutScheme } from "./cv/cv-text.mjs";
+import { SERIES_TITLE, articleCountWord } from "../content/writing.ts";
 import { buildCvDocument } from "./cv/cv-document.mjs";
 
 const OUTPUT_PATH = join("public", CV.path);
 
-const writingNote = `${seriesDescription(SERIES_TITLE)}: ${withoutScheme(LINKS.medium)}`;
+const writingNote = `${SERIES_TITLE}, a ${articleCountWord()}-part series`;
 
 const document = buildCvDocument({
   person: PERSON,
@@ -24,6 +23,7 @@ const document = buildCvDocument({
   siteUrl: SITE_URL,
   experience,
   education,
+  initiatives,
   skills,
   projects: [...featuredProjects, ...alsoProjects],
   writingNote,

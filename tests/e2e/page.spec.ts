@@ -27,7 +27,7 @@ test.describe("the page", () => {
     const context = await browser.newContext({ reducedMotion: "reduce" });
     const page = await context.newPage();
     await page.goto("/");
-    const lastEntry = page.getByRole("heading", { name: /Python Developer \(internship\)/ });
+    const lastEntry = page.getByRole("heading", { name: /Software Engineer Intern/ });
     await expect(lastEntry).toBeVisible();
     const revealed = lastEntry.locator("xpath=ancestor::*[@data-reveal][1]");
     await expect(revealed).toHaveCSS("opacity", "1");

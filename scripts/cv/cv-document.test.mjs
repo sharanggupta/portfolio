@@ -1,5 +1,5 @@
 import { expect, it } from "vitest";
-import { education, skills } from "../../content/background.ts";
+import { education, initiatives, skills } from "../../content/background.ts";
 import { experience } from "../../content/experience.ts";
 import { LINKS, PERSON, SITE_URL } from "../../content/person.ts";
 import { alsoProjects, featuredProjects } from "../../content/projects.ts";
@@ -12,6 +12,7 @@ it("builds a one-page document titled with the person's name and role", () => {
     siteUrl: SITE_URL,
     experience,
     education,
+    initiatives,
     skills,
     projects: [...featuredProjects, ...alsoProjects],
     writingNote: "note",

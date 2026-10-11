@@ -32,7 +32,7 @@ export const experience: Job[] = [
     ],
   },
   {
-    title: "Graduate Software Developer",
+    title: "Graduate Software Engineer",
     company: "THG",
     period: "Oct 2021 to Sep 2022",
     location: "Salford, England",
@@ -53,20 +53,21 @@ export const experience: Job[] = [
     ],
   },
   {
-    title: "Web Developer",
+    title: "Software Engineer",
     company: "Bombardier",
     period: "Aug 2018 to Dec 2018",
     location: "Vadodara, India",
     highlights: ["Responsible for developing web-hmi components for new metro trains"],
   },
   {
-    title: "Python Developer (internship)",
+    title: "Software Engineer Intern",
     company: "Symantec",
     period: "Jan 2017 to Jun 2017",
     location: "Pune, India",
     highlights: [
-      "Developed a new Non-PE files harvester, to gather 1 million files to whitelist, met the target within 3 months",
-      "Developed a new crawler in record time, for a time-sensitive, high-priority project",
+      "Built a crawler to collect files and their hashes for the most popular cloud-based software; gathered 1 million files to whitelist, hitting the target within 3 months",
+      "Delivered a second crawler in record time for a time-sensitive, high-priority project",
+      "Stayed on after the project to work with the team on development, across all stages of production",
     ],
   },
 ];
