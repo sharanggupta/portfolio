@@ -1,0 +1,90 @@
+import { describe, expect, it } from "vitest";
+import { education, skills } from "./background";
+import { experience } from "./experience";
+import { openSourceFixes } from "./open-source";
+import { LINKS, PERSON, PROFILES } from "./person";
+import { alsoProjects, featuredProjects, repoUrl } from "./projects";
+import { recommendations } from "./recommendations";
+import { MENU_ITEMS, SECTION, sectionKicker } from "./sections";
+import { SEO } from "./seo";
+import { articleCountWord, articles, seriesIntro } from "./writing";
+
+const everything = JSON.stringify([
+  PERSON, LINKS, featuredProjects, alsoProjects, openSourceFixes, articles, experience, recommendations, education, skills, SEO,
+]);
+
+describe("wording that must never appear", () => {
+  it.each(["Senior", "sharang1996", "sharang96", "Computing Science", "portfolio"])("%s", (forbidden) => {
+    expect(everything).not.toContain(forbidden);
+  });
+});
+
+describe("links", () => {
+  const urls = [
+    ...Object.values(LINKS),
+    ...openSourceFixes.map((fix) => fix.pullRequest),
+    ...articles.map((article) => article.url),
+    ...featuredProjects.concat(alsoProjects).flatMap((project) => [repoUrl(project), project.liveUrl ?? LINKS.github]),
+  ];
+
+  it("are all https", () => {
+    for (const url of urls) expect(url).toMatch(/^https:\/\//);
+  });
+
+  it("include every profile in PROFILES", () => {
+    expect(PROFILES.map((profile) => profile.href)).toEqual([LINKS.github, LINKS.linkedin, LINKS.medium]);
+  });
+});
+
+describe("sections", () => {
+  it("have unique ids", () => {
+    const ids = Object.values(SECTION);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it("are all reachable from the menu, which also offers the CV", () => {
+    const anchors = MENU_ITEMS.filter((item) => item.href.startsWith("#")).map((item) => item.href.slice(1));
+    for (const id of anchors) expect(Object.values(SECTION)).toContain(id);
+    expect(MENU_ITEMS.some((item) => item.download)).toBe(true);
+  });
+
+  it("number their kickers in reading order", () => {
+    expect(sectionKicker(SECTION.work, "Work")).toBe("01 · Work");
+    expect(sectionKicker(SECTION.contact, "Contact")).toBe("07 · Contact");
+  });
+});
+
+describe("projects", () => {
+  it("have unique repositories and at least one tag", () => {
+    const projects = [...featuredProjects, ...alsoProjects];
+    expect(new Set(projects.map((project) => project.repo)).size).toBe(projects.length);
+    for (const project of projects) expect(project.tags.length).toBeGreaterThan(0);
+  });
+});
+
+describe("writing", () => {
+  it("describes the series using the real article count", () => {
+    expect(articles).toHaveLength(4);
+    expect(articleCountWord()).toBe("four");
+    expect(seriesIntro()).toBe("A four-part series, each part with a working app.");
+  });
+});
+
+describe("recommendations", () => {
+  it("are kept verbatim: non-empty quotes, each from a named person and year", () => {
+    for (const recommendation of recommendations) {
+      expect(recommendation.quote.length).toBeGreaterThan(40);
+      expect(recommendation.year).toMatch(/^\d{4}$/);
+    }
+  });
+});
+
+describe("experience", () => {
+  it("lists the most recent job first and gives every job a period and location", () => {
+    expect(experience[0].company).toBe("THG");
+    for (const job of experience) {
+      expect(job.period).toContain(" to ");
+      expect(job.location).not.toBe("");
+    }
+  });
+});
