@@ -230,7 +230,7 @@ export default function Home() {
       <Section
         id="recommendations"
         band
-        kicker="05 · Kind words"
+        kicker="05 · Recommendations"
         title="What colleagues say"
         intro="From LinkedIn recommendations; names and context as shown there."
       >

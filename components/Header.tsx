@@ -8,7 +8,7 @@ export const NAV = [
   { href: "#open-source", label: "Open source" },
   { href: "#writing", label: "Writing" },
   { href: "#experience", label: "Experience" },
-  { href: "#recommendations", label: "Kind words" },
+  { href: "#recommendations", label: "Recommendations" },
   { href: "#contact", label: "Contact" },
   { href: "/cv.pdf", label: "Download CV", download: "Sharang-Gupta-CV.pdf" },
 ];
