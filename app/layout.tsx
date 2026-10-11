@@ -52,6 +52,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <JsonLd />
       </head>
       <body>
+        <div className="progress" aria-hidden="true" />
         <Header />
         {children}
         <footer className="mt-24 border-t border-border">

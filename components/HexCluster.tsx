@@ -22,7 +22,7 @@ export default function HexCluster() {
         <polygon points={hex(120, 190, 62)} fill="url(#hex-fill)" stroke="currentColor" strokeOpacity="0.35" strokeWidth="1.5" />
         <polygon points={hex(300, 290, 56)} fill="url(#hex-fill)" stroke="currentColor" strokeOpacity="0.35" strokeWidth="1.5" />
         <polygon points={hex(200, 230, 108)} fill="url(#hex-fill)" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
-        <path d="M150 232 L190 272 L258 190" fill="none" stroke="currentColor" strokeWidth="14" strokeLinecap="round" strokeLinejoin="round" />
+        <path className="draw-check" pathLength={1} d="M150 232 L190 272 L258 190" fill="none" stroke="currentColor" strokeWidth="14" strokeLinecap="round" strokeLinejoin="round" />
         {[
           [200, 122],
           [292, 176],
