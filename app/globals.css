@@ -65,6 +65,8 @@ html {
 body {
   margin: 0;
   line-height: 1.6;
+  /* Long identifiers (for example RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT) must wrap on small phones. */
+  overflow-wrap: anywhere;
 }
 
 /* One visible focus style for every keyboard-focusable thing. */
@@ -321,11 +323,20 @@ a.link:hover {
 /* ---- Hero hexagon cluster ---- */
 .hero-art {
   position: absolute;
-  right: -2rem;
-  top: 3rem;
-  width: min(34rem, 46vw);
+  right: -2.5rem;
+  top: 4.5rem;
+  width: 17rem; /* tablets: smaller, fainter and tucked right so it never crowds the name */
+  opacity: 0.6;
   color: var(--accent);
   pointer-events: none;
+}
+@media (min-width: 64rem) {
+  .hero-art {
+    right: -2rem;
+    top: 3rem;
+    width: min(34rem, 46vw);
+    opacity: 1;
+  }
 }
 
 /* ---- Full-screen menu (phones): a hexagon that opens from the button ---- */
@@ -645,5 +656,53 @@ a.link:hover {
   .theme-icon {
     width: 2.25rem;
     height: 2.25rem;
+  }
+}
+
+/* ---- Contact: a centred closing panel ---- */
+.contact-panel {
+  position: relative;
+  overflow: hidden;
+  padding: 4.5rem 1.5rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(40rem 18rem at 50% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%),
+    color-mix(in srgb, var(--surface) 70%, transparent);
+}
+.contact-art {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  color: var(--accent);
+  -webkit-mask-image: radial-gradient(closest-side, #000, transparent 90%);
+  mask-image: radial-gradient(closest-side, #000, transparent 90%);
+}
+.contact-art svg {
+  width: 100%;
+  height: 100%;
+}
+.pill {
+  display: inline-block;
+  padding: 0.45rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--fg);
+  font-weight: 500;
+  transition:
+    border-color 0.3s,
+    color 0.3s,
+    transform 0.3s var(--ease-out);
+}
+.pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+@media (max-width: 40rem) {
+  .contact-panel {
+    padding: 3rem 1.25rem;
+    border-radius: 1.25rem;
   }
 }

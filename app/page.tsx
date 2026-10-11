@@ -152,7 +152,7 @@ export default function Home() {
         <ul className="border-t border-border">
           {openSourceFixes.map((fix, index) => (
             <li key={fix.pullRequest} className="border-b border-border">
-              <Reveal delay={index * 40} className="py-4 sm:grid sm:grid-cols-[13rem_1fr] sm:gap-6">
+              <Reveal delay={index * 40} className="py-4 sm:grid sm:grid-cols-[13rem_minmax(0,1fr)] sm:gap-6">
                 <a className="cta" href={fix.pullRequest} rel="noopener">
                   {fix.project} <span aria-hidden="true">→</span>
                 </a>
@@ -293,42 +293,52 @@ export default function Home() {
         </dl>
       </Section>
 
-      <Section
-        id="contact"
-        kicker="07 · Contact"
-        title="Get in touch"
-        intro="Open to hearing about interesting engineering roles."
-      >
-        <ul className="space-y-2 text-lg">
-          <li>
-            Email:{" "}
-            <a className="link" href={`mailto:${PERSON.email}`}>
-              {PERSON.email}
-            </a>
-          </li>
-          <li>
-            Phone:{" "}
-            <a className="link" href={PERSON.phoneHref}>
-              {PERSON.phoneDisplay}
-            </a>
-          </li>
-          <li>Location: {PERSON.location}</li>
-          <li>
-            Elsewhere:{" "}
-            <a className="link" href={LINKS.github} rel="me noopener">
-              GitHub
-            </a>
-            ,{" "}
-            <a className="link" href={LINKS.linkedin} rel="me noopener">
-              LinkedIn
-            </a>
-            ,{" "}
-            <a className="link" href={LINKS.medium} rel="me noopener">
-              Medium
-            </a>
-          </li>
-        </ul>
-      </Section>
+      <section id="contact" aria-labelledby="contact-heading" className="plain">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="contact-panel">
+            <div className="contact-art" aria-hidden="true">
+              <ProjectArt seed={9} />
+            </div>
+            <div className="relative">
+              <p className="kicker">07 · Contact</p>
+              <h2 id="contact-heading" className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+                Get in touch
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-lg text-muted">
+                Open to hearing about interesting engineering roles.
+              </p>
+              <p className="mt-8 flex flex-wrap justify-center gap-3">
+                <a
+                  href={`mailto:${PERSON.email}`}
+                  className="rounded-md bg-accent px-6 py-3 font-semibold text-bg transition hover:-translate-y-0.5 hover:opacity-90"
+                >
+                  {PERSON.email}
+                </a>
+                <a
+                  href={PERSON.phoneHref}
+                  className="rounded-md border border-border bg-bg/60 px-6 py-3 font-semibold transition hover:-translate-y-0.5 hover:border-accent"
+                >
+                  {PERSON.phoneDisplay}
+                </a>
+              </p>
+              <ul className="mt-8 flex flex-wrap justify-center gap-3" aria-label="Profiles">
+                {[
+                  ["GitHub", LINKS.github],
+                  ["LinkedIn", LINKS.linkedin],
+                  ["Medium", LINKS.medium],
+                ].map(([label, href]) => (
+                  <li key={label}>
+                    <a className="pill" href={href} rel="me noopener">
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-8 text-sm text-muted">{PERSON.location}</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
