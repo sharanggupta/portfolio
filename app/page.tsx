@@ -266,39 +266,31 @@ export default function Home() {
       </Section>
 
       <Section id="education" kicker="06 · Background" title="Education and skills">
-        <div className="grid gap-12 md:grid-cols-2">
-          <div>
-            <h3 className="text-xl font-semibold">Education</h3>
-            <ul className="mt-4 space-y-4">
-              {education.map((item) => (
-                <li key={item.qualification}>
-                  <span className="font-medium">{item.qualification}</span>
-                  <br />
-                  <span className="text-muted">
-                    {item.institution}, {item.period}
+        <h3 className="text-xl font-semibold">Education</h3>
+        <ul className="mt-4 grid gap-4 md:grid-cols-2">
+          {education.map((item) => (
+            <li key={item.qualification} className="rounded-xl border border-border bg-surface/70 p-6">
+              <p className="kicker">{item.period}</p>
+              <p className="mt-2 text-lg font-semibold">{item.qualification}</p>
+              <p className="mt-1 text-muted">{item.institution}</p>
+            </li>
+          ))}
+        </ul>
+        <h3 className="mt-12 text-xl font-semibold">Skills</h3>
+        <dl className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {skills.map((group) => (
+            <div key={group.group} className="rounded-xl border border-border bg-surface/70 p-5">
+              <dt className="text-sm text-muted">{group.group}</dt>
+              <dd className="mt-3 flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <span key={item} className="tag text-fg">
+                    {item}
                   </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold">Skills</h3>
-            <dl className="mt-4 space-y-4">
-              {skills.map((group) => (
-                <div key={group.group}>
-                  <dt className="text-sm text-muted">{group.group}</dt>
-                  <dd className="mt-1 flex flex-wrap gap-2">
-                    {group.items.map((item) => (
-                      <span key={item} className="tag text-fg">
-                        {item}
-                      </span>
-                    ))}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </div>
+                ))}
+              </dd>
+            </div>
+          ))}
+        </dl>
       </Section>
 
       <Section
