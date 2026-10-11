@@ -1,6 +1,9 @@
 // Colours and text styles of the CV PDF (react-pdf stylesheet).
 
-import { StyleSheet } from "@react-pdf/renderer";
+import { Font, StyleSheet } from "@react-pdf/renderer";
+
+// Words stay whole: no "Technol-ogy" breaks.
+Font.registerHyphenationCallback((word) => [word]);
 
 export const SLATE = "#343f56"; // headings and the contact band
 const SLATE_SOFT = "#4a5775"; // role line
@@ -21,7 +24,7 @@ export const styles = StyleSheet.create({
   left: { width: "56%", paddingRight: 22 },
   right: { width: "44%" },
   heading: { fontSize: 13, fontWeight: "bold", color: SLATE, textTransform: "uppercase", marginBottom: 6 },
-  entry: { marginBottom: 7 },
+  entry: { marginBottom: 5 },
   tick: { position: "absolute", left: -34, top: 8, width: 14, borderTopWidth: 1, borderTopColor: INK },
   title: { fontSize: 10.6, fontWeight: "bold" },
   company: { fontSize: 9.6 },
@@ -32,9 +35,9 @@ export const styles = StyleSheet.create({
   grow: { flexGrow: 1, flexShrink: 1, fontSize: 8 },
   chips: { flexDirection: "row", flexWrap: "wrap", marginBottom: 9 },
   chip: { backgroundColor: CHIP, color: "#ffffff", fontSize: 7.8, paddingVertical: 2.6, paddingHorizontal: 8, borderRadius: 3, marginRight: 5, marginBottom: 5 },
-  project: { marginBottom: 5 },
+  project: { marginBottom: 7 },
   projectName: { fontSize: 9.4 },
   projectText: { fontSize: 7.9, color: "#333333" },
-  section: { marginBottom: 8 },
+  section: { marginBottom: 12 },
   link: { fontSize: 7.9, color: SLATE, textDecoration: "underline", marginTop: 3 },
 });

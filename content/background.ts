@@ -28,6 +28,6 @@ export const initiatives = [
   },
   {
     title: "Taught Android app development",
-    detail: "To second-year MTech students at Symbiosis Institute of Technology (Mar-Apr 2017), as part of their IoT course.",
+    detail: "To second-year MTech students, Symbiosis Institute of Technology (Mar-Apr 2017), as part of their IoT course.",
   },
 ] as const;

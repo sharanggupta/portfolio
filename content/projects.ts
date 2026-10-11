@@ -11,6 +11,8 @@ export type Project = {
   description: string;
   tags: string[];
   liveUrl?: string;
+  /** One short line for the CV; the website shows the full description. */
+  cvSummary: string;
 };
 
 /** The short label on a project's art: its status, or else its first technology. */
@@ -26,6 +28,7 @@ export const featuredProjects: Project[] = [
   {
     name: "Orderly",
     repo: "orderly",
+    cvSummary: "Hexagonal architecture, one failing test at a time.",
     status: "Work in progress",
     tags: ["Java 21", "Maven", "Hexagonal architecture", "TDD"],
     description:
@@ -34,6 +37,7 @@ export const featuredProjects: Project[] = [
   {
     name: "Flight search",
     repo: "flight-search",
+    cvSummary: "Spring Boot REST API, hexagonal architecture, test-first.",
     tags: ["Java 21", "Spring Boot 3.4", "Hexagonal architecture", "GitHub Actions"],
     description:
       "A Spring Boot REST API for searching flights, built test-first with hexagonal architecture. The domain and application code is plain Java; all framework code (Spring, JPA, REST) sits outside and depends inward, never the other way. Java 21, Spring Boot 3.4, with CI on GitHub Actions.",
@@ -41,6 +45,7 @@ export const featuredProjects: Project[] = [
   {
     name: "EazyBank",
     repo: "eazybank",
+    cvSummary: "Four Spring Boot microservices behind a gateway.",
     tags: ["Spring Boot", "Kubernetes", "PostgreSQL", "GitHub Actions"],
     description:
       "A banking application split into four Spring Boot microservices: a gateway as the single entry point, and account, card and loan services, each with its own PostgreSQL database. Runs on Kubernetes, with GitHub Actions workflows to build and deploy each service, and an observability stack (Prometheus, Grafana, Loki and Tempo) for metrics, logs and traces.",
@@ -48,6 +53,7 @@ export const featuredProjects: Project[] = [
   {
     name: "OAuth2 product",
     repo: "oauth2product",
+    cvSummary: "Resource server and client, built test-first.",
     tags: ["Spring Boot", "OAuth2", "Docker Compose", "TDD"],
     description:
       "An OAuth2 resource server and client with Spring Boot, built test-first and run end to end with Docker Compose. The article series below follows this code.",
@@ -58,12 +64,14 @@ export const alsoProjects: Project[] = [
   {
     name: "Batch data migration",
     repo: "batch-data-migration",
+    cvSummary: "NoSQL to SQL with Spring Batch.",
     tags: ["Spring Batch", "MongoDB", "PostgreSQL"],
     description: "Data migration from NoSQL to SQL using Spring Batch.",
   },
   {
     name: "Thiasil",
     repo: "thiasil",
+    cvSummary: "Next.js website for a glass-works client.",
     tags: ["Next.js", "React", "Tailwind CSS", "Redis"],
     liveUrl: "https://www.thiasil.com/",
     description:
