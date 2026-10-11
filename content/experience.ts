@@ -68,8 +68,7 @@ export const experience: Job[] = [
     company: "Symantec",
     period: "Jan 2017 to Jun 2017",
     location: "Pune, India",
-    highlights: [],
-    cvHighlights: [
+    highlights: [
       "Developed a new Non-PE files harvester, to gather 1 million files to whitelist, met the target within 3 months",
       "Developed a new crawler in record time, for a time-sensitive project involving a lawsuit threat",
     ],
