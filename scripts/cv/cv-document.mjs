@@ -33,8 +33,15 @@ const jobEntry = (job) =>
     bullets: job.highlights,
   });
 
+// Education sits in the right column, which has no timeline line, so its entries have no tick.
 const educationEntry = (item) =>
-  timelineEntry({ key: item.qualification, title: item.qualification, company: item.institution, period: item.period });
+  h(
+    View,
+    { key: item.qualification, style: styles.project, wrap: false },
+    text(styles.title, item.qualification),
+    text(styles.company, item.institution),
+    h(View, { style: styles.metaRow }, text(styles.meta, dash(item.period))),
+  );
 
 const projectEntry = (project) =>
   h(
@@ -44,13 +51,12 @@ const projectEntry = (project) =>
     text(styles.projectText, project.cvSummary),
   );
 
-const leftColumn = ({ experience, education }) =>
+const leftColumn = ({ experience }) =>
   h(
     View,
     { style: styles.left },
     text(styles.heading, "Work experience"),
     ...experience.map(jobEntry),
-    h(View, { style: { marginTop: 4 } }, text(styles.heading, "Education"), ...education.map(educationEntry)),
   );
 
 const initiativeEntry = (item) =>
@@ -61,7 +67,7 @@ const initiativeEntry = (item) =>
     text(styles.projectText, item.detail),
   );
 
-const rightColumn = ({ skills, projects, initiatives, writingNote, mediumUrl, mediumLabel }) =>
+const rightColumn = ({ skills, projects, education, initiatives, writingNote, mediumUrl, mediumLabel }) =>
   h(
     View,
     { style: styles.right },
@@ -76,6 +82,7 @@ const rightColumn = ({ skills, projects, initiatives, writingNote, mediumUrl, me
       text(styles.projectText, writingNote),
       h(Link, { src: mediumUrl, style: styles.link }, mediumLabel),
     ),
+    h(View, { style: styles.section }, text(styles.heading, "Education"), ...education.map(educationEntry)),
     h(View, { style: styles.section }, text(styles.heading, "Hackathon and teaching"), ...initiatives.map(initiativeEntry)),
   );
 
