@@ -34,3 +34,8 @@ yarn-error.log*
 .vercel
 
 *.tsbuildinfo
+
+# temporary refactor safety net (not committed)
+/tests/visual/
+/test-results/
+/playwright-report/

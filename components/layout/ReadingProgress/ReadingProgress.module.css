@@ -1,0 +1,14 @@
+/* Driven by scroll position; browsers without scroll-driven animations simply skip it. */
+@keyframes grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .progress {
+      animation: grow linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+}

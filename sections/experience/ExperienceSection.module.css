@@ -1,0 +1,27 @@
+/* A vertical line with a hexagon marker at each job. */
+.timeline {
+  position: relative;
+  padding-left: 2.25rem;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.6rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+.entry {
+  position: relative;
+}
+.entry::before {
+  content: "";
+  position: absolute;
+  left: -2.25rem;
+  top: 0.3rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: var(--accent);
+  clip-path: var(--hex);
+}

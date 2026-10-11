@@ -1,0 +1,38 @@
+import { ArrowLabel } from "@/components/ui/ArrowLink";
+import { CardLink } from "@/components/ui/Card";
+import Kicker from "@/components/ui/Kicker";
+import Reveal from "@/components/ui/Reveal/Reveal";
+import { STAGGER_MS } from "@/lib/motion";
+import Section from "@/components/ui/Section/Section";
+import TextLink from "@/components/ui/TextLink";
+import { LINKS } from "@/content/person";
+import { SECTION, sectionHeading } from "@/content/sections";
+import { articles } from "@/content/writing";
+
+export default function WritingSection() {
+  return (
+    <Section {...sectionHeading(SECTION.writing)}>
+      <ol className="grid gap-4 sm:grid-cols-2">
+        {articles.map((article, index) => {
+          const part = index + 1;
+          return (
+            <li key={article.url}>
+              <Reveal delay={(index % 2) * STAGGER_MS.twoColumns}>
+                <CardLink className="p-6 no-underline" href={article.url} aria-label={`Part ${part}: ${article.title}`}>
+                  <Kicker as="span">Part {part}</Kicker>
+                  <span className="mt-2 block text-lg font-semibold">{article.title}</span>
+                  <ArrowLabel className="mt-4">Read on Medium</ArrowLabel>
+                </CardLink>
+              </Reveal>
+            </li>
+          );
+        })}
+      </ol>
+      <p className="mt-6">
+        <TextLink href={LINKS.medium} me>
+          All articles on Medium
+        </TextLink>
+      </p>
+    </Section>
+  );
+}

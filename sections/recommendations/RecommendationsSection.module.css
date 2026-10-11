@@ -1,0 +1,8 @@
+/* The chamfered corners that make a quote card, and the hexagon that holds the initials. */
+.quote {
+  clip-path: polygon(0 0, calc(100% - 2rem) 0, 100% 2rem, 100% 100%, 2rem 100%, 0 calc(100% - 2rem));
+}
+.avatar {
+  background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 45%, var(--fg)));
+  clip-path: var(--hex);
+}

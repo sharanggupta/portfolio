@@ -1,0 +1,10 @@
+/* The soft glow behind the panel, and the mask that fades the hexagon art out towards its edges. */
+.panel {
+  background:
+    radial-gradient(40rem 18rem at 50% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%),
+    color-mix(in srgb, var(--surface) 70%, transparent);
+}
+.art {
+  -webkit-mask-image: radial-gradient(closest-side, #000, transparent 90%);
+  mask-image: radial-gradient(closest-side, #000, transparent 90%);
+}
