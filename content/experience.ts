@@ -60,7 +60,7 @@ export const experience: Job[] = [
     highlights: ["Responsible for developing web-hmi components for new metro trains"],
   },
   {
-    title: "Python Developer (internship)",
+    title: "Software Engineer Intern",
     company: "Symantec",
     period: "Jan 2017 to Jun 2017",
     location: "Pune, India",
