@@ -14,8 +14,7 @@
     "cv": "node scripts/generate-cv.mjs",
     "lint": "oxlint .",
     "test": "vitest run",
-    "test:e2e": "playwright test --grep-invert visual",
-    "test:visual": "playwright test visual"
+    "test:e2e": "playwright test --grep-invert visual"
   },
   "dependencies": {
     "next": "^16.4.0",

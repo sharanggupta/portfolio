@@ -8,15 +8,17 @@ Built with Next.js (App Router), TypeScript and Tailwind CSS, on Node 24.
 ## Where things live
 
 ```
-content/        Every fact the site and the CV say, one file per topic. Edit text here.
+content/        The facts the site and the CV share (projects, jobs, links, quotes), one file per topic,
+                with the few helpers that describe them. Headings and short intros sit beside the
+                section component that shows them.
 sections/       One folder per section of the page (Hero, Work, Writing, ...).
-                A folder holds everything for its section: component, CSS module, test.
+                Each folder holds everything for its section: component, CSS module, test.
 components/
   ui/           Small building blocks used by several sections (Button, Card, Section, Reveal, ...).
   layout/       The frame around the page: Header, SiteMenu, ThemeToggle, ReadingProgress, Footer.
-  brand/        The logo mark and the hexagon pattern.
+  brand/        The logo mark, the hexagon pattern and the generated social image and icon.
   seo/          JSON-LD structured data.
-lib/            Logic without markup: theme, hooks, SEO metadata, social image, small helpers.
+lib/            Logic without markup: theme, hooks, SEO metadata, small helpers.
 app/            Next.js routes only: layout, page, robots, sitemap, manifest, icons, social images,
                 and globals.css (colour tokens and base styles, nothing else).
 scripts/        The CV generator: generate-cv.mjs runs, cv/ holds its parts.
@@ -42,8 +44,9 @@ Look beside the component first: nothing is styled from a distant global file.
 - Components that react to a hovered card use the `data-card` attribute as the hook (see `Card`
   and `ArrowLink`) instead of reaching into each other's class names.
 
-A component gets a folder only when it has a CSS module or a test of its own; otherwise it is a
-single file.
+Under `components/`, a component gets a folder only when it has a CSS module or a test of its
+own; otherwise it is a single file. Every section under `sections/` gets a folder, so the page
+maps one to one onto the directory.
 
 ## Commands
 

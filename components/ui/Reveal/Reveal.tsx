@@ -1,10 +1,8 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
+import { cssVar } from "@/lib/cssVar";
 import styles from "./Reveal.module.css";
-
-/** Delay steps between neighbouring items, so a group reveals one after another. */
-export const STAGGER_MS = { twoColumns: 90, listRow: 40, quote: 80 } as const;
 
 const VISIBLE_FRACTION = 0.12;
 const BOTTOM_MARGIN = "0px 0px -6% 0px";
@@ -50,7 +48,7 @@ export default function Reveal({
   }, []);
 
   return (
-    <div ref={ref} className={`${styles.reveal} ${className}`} style={{ ["--delay" as string]: `${delay}ms` }}>
+    <div ref={ref} className={`${styles.reveal} ${className}`} style={cssVar("--delay", `${delay}ms`)}>
       {children}
     </div>
   );

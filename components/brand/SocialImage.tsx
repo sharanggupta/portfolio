@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
-import BrandMark from "@/components/brand/BrandMark";
 import { PERSON } from "@/content/person";
-import { BRAND_COLORS } from "./tokens";
+import BrandMark from "./BrandMark";
+import { BRAND_COLORS } from "./brand-colors";
 
 const MARK_FILL_OPACITY = 0.12;
 

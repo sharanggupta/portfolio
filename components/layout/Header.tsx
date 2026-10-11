@@ -1,4 +1,5 @@
 import BrandMark from "@/components/brand/BrandMark";
+import Container from "@/components/ui/Container";
 import { PERSON } from "@/content/person";
 import { MENU_ITEMS } from "@/content/sections";
 import SiteMenu from "./SiteMenu/SiteMenu";
@@ -13,12 +14,12 @@ export default function Header() {
   return (
     <>
       <header className="absolute inset-x-0 top-0 z-30">
-        <div className="mx-auto flex max-w-5xl items-center px-6 py-5">
+        <Container className="flex items-center py-5">
           <a href="#top" className="flex items-center gap-2 font-semibold text-accent motion-safe:animate-fade-in">
             <BrandMark size={30} />
             <span className="text-fg">{PERSON.name}</span>
           </a>
-        </div>
+        </Container>
       </header>
       <SiteMenu items={MENU_ITEMS} />
       <ThemeToggle />

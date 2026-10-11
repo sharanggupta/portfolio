@@ -1,9 +1,9 @@
-import type { CSSProperties } from "react";
 import BrandMark from "@/components/brand/BrandMark";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import Kicker from "@/components/ui/Kicker";
 import TextLink from "@/components/ui/TextLink";
+import { cssVar } from "@/lib/cssVar";
 import { CV, PERSON, PROFILES } from "@/content/person";
 import HexCluster from "./HexCluster";
 import styles from "./Hero.module.css";
@@ -11,8 +11,8 @@ import styles from "./Hero.module.css";
 const ENTER_STEP_SECONDS = 0.1;
 
 /** Each step delays an element's entrance a little more than the one before. */
-function enterAfter(steps: number): CSSProperties {
-  return { ["--enter-delay" as string]: `${steps * ENTER_STEP_SECONDS}s` };
+function enterAfter(steps: number) {
+  return cssVar("--enter-delay", `${steps * ENTER_STEP_SECONDS}s`);
 }
 
 /** The top of the page, and the only h1. */

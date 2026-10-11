@@ -1,4 +1,4 @@
-import { appleIcon } from "@/lib/brand/social-image";
+import { appleIcon } from "@/components/brand/SocialImage";
 
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";

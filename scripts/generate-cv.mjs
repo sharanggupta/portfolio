@@ -4,7 +4,7 @@
 // Layout follows the previous CV: name and tagline on top, a dark contact band,
 // experience and education on the left, skills, projects and open source on the right.
 import { mkdirSync } from "node:fs";
-import { dirname } from "node:path";
+import { dirname, join } from "node:path";
 import { renderToFile } from "@react-pdf/renderer";
 import { education, skills } from "../content/background.ts";
 import { experience } from "../content/experience.ts";
@@ -14,7 +14,7 @@ import { SERIES_TITLE, articleCountWord } from "../content/writing.ts";
 import { withoutScheme } from "./cv/cv-text.mjs";
 import { buildCvDocument } from "./cv/cv-document.mjs";
 
-const OUTPUT_PATH = `public${CV.path}`;
+const OUTPUT_PATH = join("public", CV.path);
 
 const writingNote = `A ${articleCountWord()}-part series on ${SERIES_TITLE}, each part with a working app: ${withoutScheme(LINKS.medium)}`;
 

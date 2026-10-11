@@ -1,4 +1,4 @@
-import { socialImage } from "@/lib/brand/social-image";
+import { socialImage } from "@/components/brand/SocialImage";
 
 // Same picture for the Twitter/X large card (twitter:image is added automatically).
 export const alt = "Sharang Gupta, software engineer: a hexagon with a passing test";

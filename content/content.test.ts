@@ -24,7 +24,7 @@ describe("links", () => {
     ...Object.values(LINKS),
     ...openSourceFixes.map((fix) => fix.pullRequest),
     ...articles.map((article) => article.url),
-    ...featuredProjects.concat(alsoProjects).flatMap((project) => [repoUrl(project), project.liveUrl ?? LINKS.github]),
+    ...featuredProjects.concat(alsoProjects).flatMap((project) => [repoUrl(project), ...(project.liveUrl ? [project.liveUrl] : [])]),
   ];
 
   it("are all https", () => {
@@ -71,7 +71,7 @@ describe("writing", () => {
 });
 
 describe("recommendations", () => {
-  it("are kept verbatim: non-empty quotes, each from a named person and year", () => {
+  it("have a substantial quote and a four-digit year", () => {
     for (const recommendation of recommendations) {
       expect(recommendation.quote.length).toBeGreaterThan(40);
       expect(recommendation.year).toMatch(/^\d{4}$/);

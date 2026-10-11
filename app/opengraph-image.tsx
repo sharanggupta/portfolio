@@ -1,4 +1,4 @@
-import { socialImage } from "@/lib/brand/social-image";
+import { socialImage } from "@/components/brand/SocialImage";
 
 // Next.js serves this at /opengraph-image and adds the og:image tags automatically.
 export const alt = "Sharang Gupta, software engineer: a hexagon with a passing test";

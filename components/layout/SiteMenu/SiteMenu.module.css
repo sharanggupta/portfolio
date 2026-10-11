@@ -1,6 +1,7 @@
 /* The overlay opens as a hexagon growing out of the menu button (top right), and shrinks back to it. */
 .overlay {
-  background: linear-gradient(135deg, #0f6e73, #0d1117 85%);
+  /* The closed shape has the same six points as the open hexagon, so the browser can animate between them. */
+  background: linear-gradient(135deg, var(--teal-deep), var(--ink) 85%);
   visibility: hidden;
   clip-path: polygon(
     calc(100% - 3.25rem) 3rem,
@@ -31,13 +32,13 @@
   font-weight: 300;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #e6edf3;
+  color: var(--paper);
 }
 .link::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: #5fc1c5;
+  background: var(--teal);
   clip-path: polygon(100% 100%, 100% 100%, 112% 0, 100% 0);
   transition: clip-path 0.5s var(--ease-out);
 }
@@ -50,7 +51,7 @@
 }
 .link:hover,
 .link:focus-visible {
-  color: #0d1117;
+  color: var(--ink);
 }
 
 @keyframes link-in {

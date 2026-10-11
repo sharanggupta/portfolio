@@ -7,7 +7,7 @@ import { SECTION, sectionKicker } from "@/content/sections";
 
 export default function BackgroundSection() {
   return (
-    <Section id={SECTION.background} tuck kicker={sectionKicker(SECTION.background, "Background")} title="Education and skills">
+    <Section id={SECTION.education} tuck kicker={sectionKicker(SECTION.education, "Background")} title="Education and skills">
       <h3 className="text-xl font-semibold">Education</h3>
       <ul className="mt-4 grid gap-4 md:grid-cols-2">
         {education.map((item) => (

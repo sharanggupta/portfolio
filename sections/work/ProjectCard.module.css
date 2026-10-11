@@ -1,6 +1,6 @@
 /* The hexagon-pattern header. Its pattern zooms a little when the card (marked data-card) is hovered. */
 .art {
-  background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 30%, #0d1117));
+  background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 30%, var(--ink)));
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 }
 .art svg {

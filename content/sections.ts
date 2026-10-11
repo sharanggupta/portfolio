@@ -9,7 +9,7 @@ export const SECTION = {
   writing: "writing",
   experience: "experience",
   recommendations: "recommendations",
-  background: "education",
+  education: "education",
   contact: "contact",
 } as const;
 

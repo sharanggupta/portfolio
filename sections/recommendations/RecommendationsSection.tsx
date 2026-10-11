@@ -1,5 +1,6 @@
 import ArrowLink from "@/components/ui/ArrowLink";
-import Reveal, { STAGGER_MS } from "@/components/ui/Reveal/Reveal";
+import Reveal from "@/components/ui/Reveal/Reveal";
+import { STAGGER_MS } from "@/lib/motion";
 import Section from "@/components/ui/Section/Section";
 import { LINKS } from "@/content/person";
 import { recommendations } from "@/content/recommendations";
@@ -30,16 +31,15 @@ export default function RecommendationsSection() {
                   >
                     {initials(recommendation.name)}
                   </div>
-                  <div>
-                    <blockquote className="text-lg">
-                      <p>“{recommendation.quote}”</p>
-                    </blockquote>
-                    <figcaption className="mt-4 text-sm text-muted">
-                      <span className="font-semibold text-fg">{recommendation.name}</span>, {recommendation.year},{" "}
-                      {recommendation.relationship}
-                    </figcaption>
-                  </div>
+                  <blockquote className="text-lg">
+                    <p>“{recommendation.quote}”</p>
+                  </blockquote>
                 </div>
+                {/* Indented by the avatar and gap, so the caption lines up under the quote. */}
+                <figcaption className="mt-4 pl-[4.75rem] text-sm text-muted">
+                  <span className="font-semibold text-fg">{recommendation.name}</span>, {recommendation.year},{" "}
+                  {recommendation.relationship}
+                </figcaption>
               </figure>
             </Reveal>
           </li>

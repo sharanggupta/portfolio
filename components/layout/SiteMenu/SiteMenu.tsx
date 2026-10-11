@@ -1,8 +1,9 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { MenuItem } from "@/content/sections";
+import { cssVar } from "@/lib/cssVar";
 import { useBodyScrollLock } from "@/lib/hooks/useBodyScrollLock";
 import { useEscapeKey } from "@/lib/hooks/useEscapeKey";
 import { useFocusCycle } from "@/lib/hooks/useFocusCycle";
@@ -70,7 +71,7 @@ export default function SiteMenu({ items }: { items: readonly MenuItem[] }) {
                         linkRefs.current[index] = element;
                       }}
                       className={styles.link}
-                      style={{ ["--stagger" as string]: `${index * ITEM_STAGGER_SECONDS}s` } as CSSProperties}
+                      style={cssVar("--stagger", `${index * ITEM_STAGGER_SECONDS}s`)}
                       href={item.href}
                       download={item.download}
                       tabIndex={open ? 0 : -1}
