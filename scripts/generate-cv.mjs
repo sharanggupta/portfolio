@@ -25,7 +25,6 @@ import {
   education,
   experience,
   featuredProjects,
-  openSourceFixes,
   skills,
 } from "../content/site.ts";
 
@@ -36,33 +35,33 @@ const GREY = "#6b7280";
 const INK = "#16191d";
 
 const s = StyleSheet.create({
-  page: { fontFamily: "Helvetica", fontSize: 9, color: INK, lineHeight: 1.35 },
-  top: { paddingTop: 30, paddingHorizontal: 34, paddingBottom: 12 },
+  page: { fontFamily: "Helvetica", fontSize: 8.4, color: INK, lineHeight: 1.35 },
+  top: { paddingTop: 24, paddingHorizontal: 34, paddingBottom: 9 },
   name: { fontSize: 27, lineHeight: 1.1, color: INK },
   role: { fontSize: 12.5, color: SLATE_SOFT, marginTop: 4 },
   tagline: { fontSize: 9.5, marginTop: 5 },
-  band: { backgroundColor: SLATE, color: "#ffffff", paddingVertical: 11, paddingHorizontal: 34, flexDirection: "row", flexWrap: "wrap" },
+  band: { backgroundColor: SLATE, color: "#ffffff", paddingVertical: 7, paddingHorizontal: 34, flexDirection: "row", flexWrap: "wrap" },
   bandItem: { width: "50%", flexDirection: "row", alignItems: "center", paddingVertical: 4 },
   bandText: { marginLeft: 8, fontSize: 9.5, color: "#ffffff" },
-  columns: { flexDirection: "row", paddingHorizontal: 34, paddingTop: 14 },
+  columns: { flexDirection: "row", paddingHorizontal: 34, paddingTop: 10 },
   left: { width: "56%", paddingRight: 22 },
   right: { width: "44%" },
-  heading: { fontSize: 14.5, fontWeight: "bold", color: SLATE, textTransform: "uppercase", marginBottom: 9 },
-  entry: { marginBottom: 11 },
+  heading: { fontSize: 13, fontWeight: "bold", color: SLATE, textTransform: "uppercase", marginBottom: 6 },
+  entry: { marginBottom: 7 },
   tick: { position: "absolute", left: -34, top: 8, width: 14, borderTopWidth: 1, borderTopColor: INK },
-  title: { fontSize: 11.5, fontWeight: "bold" },
-  company: { fontSize: 10.5 },
+  title: { fontSize: 10.6, fontWeight: "bold" },
+  company: { fontSize: 9.6 },
   metaRow: { flexDirection: "row", justifyContent: "space-between", marginTop: 1 },
   meta: { fontSize: 8, fontStyle: "italic", color: GREY },
-  bullet: { flexDirection: "row", marginTop: 2.5 },
+  bullet: { flexDirection: "row", marginTop: 1.5 },
   bulletDot: { width: 11, paddingTop: 3.5 },
-  grow: { flexGrow: 1, flexShrink: 1, fontSize: 8.6 },
-  chips: { flexDirection: "row", flexWrap: "wrap", marginBottom: 14 },
-  chip: { backgroundColor: CHIP, color: "#ffffff", fontSize: 8.4, paddingVertical: 3.5, paddingHorizontal: 8, borderRadius: 3, marginRight: 5, marginBottom: 5 },
-  project: { marginBottom: 7 },
-  projectName: { fontSize: 10.2 },
-  projectText: { fontSize: 8.4, color: "#333333" },
-  section: { marginBottom: 12 },
+  grow: { flexGrow: 1, flexShrink: 1, fontSize: 8 },
+  chips: { flexDirection: "row", flexWrap: "wrap", marginBottom: 9 },
+  chip: { backgroundColor: CHIP, color: "#ffffff", fontSize: 7.8, paddingVertical: 2.6, paddingHorizontal: 8, borderRadius: 3, marginRight: 5, marginBottom: 5 },
+  project: { marginBottom: 5 },
+  projectName: { fontSize: 9.4 },
+  projectText: { fontSize: 7.9, color: "#333333" },
+  section: { marginBottom: 8 },
 });
 
 const text = (style, children) => h(Text, { style }, children);
@@ -103,7 +102,7 @@ const jobEntry = (job) =>
     text(s.title, job.title),
     text(s.company, job.company),
     h(View, { style: s.metaRow }, text(s.meta, dash(job.period)), text(s.meta, job.location)),
-    ...job.highlights.map((line) =>
+    ...[...job.highlights, ...(job.cvHighlights ?? [])].map((line) =>
       h(View, { key: line, style: s.bullet }, text(s.bulletDot, "•"), text(s.grow, line)),
     ),
   );
@@ -142,12 +141,6 @@ const right = h(
       text(s.projectName, p.status ? `${p.name} (${p.status.toLowerCase()})` : p.name),
       text(s.projectText, firstSentence(p.description)),
     ),
-  ),
-  h(
-    View,
-    { style: s.section },
-    text(s.heading, "Open source"),
-    text(s.projectText, `Fixes merged upstream in ${openSourceFixes.map((f) => f.project).join(", ")}.`),
   ),
   h(
     View,
