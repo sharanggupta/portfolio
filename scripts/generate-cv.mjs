@@ -9,7 +9,7 @@ import { renderToFile } from "@react-pdf/renderer";
 import { education, initiatives, skills } from "../content/background.ts";
 import { experience } from "../content/experience.ts";
 import { CV, LINKS, PERSON, SITE_URL } from "../content/person.ts";
-import { alsoProjects, featuredProjects } from "../content/projects.ts";
+import { alsoProjects, featuredProjects, repoUrl } from "../content/projects.ts";
 import { SERIES_TITLE, articleCountWord } from "../content/writing.ts";
 import { buildCvDocument } from "./cv/cv-document.mjs";
 
@@ -25,7 +25,8 @@ const document = buildCvDocument({
   education,
   initiatives,
   skills,
-  projects: [...featuredProjects, ...alsoProjects],
+  // Each name links to the live site when there is one, otherwise to the repository.
+  projects: [...featuredProjects, ...alsoProjects].map((project) => ({ ...project, cvUrl: project.liveUrl ?? repoUrl(project) })),
   writingNote,
 });
 

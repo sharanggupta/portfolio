@@ -35,9 +35,11 @@ export const styles = StyleSheet.create({
   grow: { flexGrow: 1, flexShrink: 1, fontSize: 8 },
   chips: { flexDirection: "row", flexWrap: "wrap", marginBottom: 12 },
   chip: { backgroundColor: CHIP, color: "#ffffff", fontSize: 7.8, paddingVertical: 2.6, paddingHorizontal: 8, borderRadius: 3, marginRight: 5, marginBottom: 5 },
-  project: { marginBottom: 12 },
+  project: { marginBottom: 9 },
+  projectLink: { fontSize: 9.4, color: INK, textDecoration: "underline" },
+  projectsNote: { fontSize: 7.9, color: GREY, textDecoration: "none", marginBottom: 6, marginTop: -2 },
   projectName: { fontSize: 9.4 },
   projectText: { fontSize: 7.9, color: "#333333" },
-  section: { marginBottom: 20 },
+  section: { marginBottom: 18 },
   link: { fontSize: 7.9, color: SLATE, textDecoration: "underline", marginTop: 3 },
 });

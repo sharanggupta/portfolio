@@ -14,7 +14,7 @@ it("builds a one-page document titled with the person's name and role", () => {
     education,
     initiatives,
     skills,
-    projects: [...featuredProjects, ...alsoProjects],
+    projects: [...featuredProjects, ...alsoProjects].map((project) => ({ ...project, cvUrl: "https://example.test" })),
     writingNote: "note",
   });
   expect(document.props.title).toBe("Sharang Gupta - Software Engineer");
