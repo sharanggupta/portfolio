@@ -32,7 +32,7 @@ export const experience: Job[] = [
     ],
   },
   {
-    title: "Graduate Software Developer",
+    title: "Graduate Software Engineer",
     company: "THG",
     period: "Oct 2021 to Sep 2022",
     location: "Salford, England",
@@ -53,7 +53,7 @@ export const experience: Job[] = [
     ],
   },
   {
-    title: "Web Developer",
+    title: "Software Engineer",
     company: "Bombardier",
     period: "Aug 2018 to Dec 2018",
     location: "Vadodara, India",
@@ -65,6 +65,7 @@ export const experience: Job[] = [
     period: "Jan 2017 to Jun 2017",
     location: "Pune, India",
     highlights: [
+      "Built a crawler to collect files and their hashes for the most popular cloud-based software, gathering over one million files to whitelist and prevent false positives",
       "Developed a new Non-PE files harvester, to gather 1 million files to whitelist, met the target within 3 months",
       "Developed a new crawler in record time, for a time-sensitive, high-priority project",
     ],
