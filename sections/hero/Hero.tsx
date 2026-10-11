@@ -4,7 +4,7 @@ import Container from "@/components/ui/Container";
 import Kicker from "@/components/ui/Kicker";
 import TextLink from "@/components/ui/TextLink";
 import { cssVar } from "@/lib/cssVar";
-import { CV, PERSON, PROFILES } from "@/content/person";
+import { CV, EMAIL_BUTTON_LABEL, PERSON, PROFILES } from "@/content/person";
 import HexCluster from "./HexCluster";
 import styles from "./Hero.module.css";
 
@@ -51,7 +51,7 @@ export default function Hero() {
         <p className={`${styles.enter} mt-8 flex flex-wrap gap-3`} style={enterAfter(2)}>
           <Button href={CV.path}>{CV.buttonLabel}</Button>
           <Button href={PERSON.mailto} variant="outline">
-            Email me
+            {EMAIL_BUTTON_LABEL}
           </Button>
         </p>
       </Container>

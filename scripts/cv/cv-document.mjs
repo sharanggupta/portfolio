@@ -9,28 +9,32 @@ import { dash, firstSentence, withoutScheme } from "./cv-text.mjs";
 
 const text = (style, children) => h(Text, { style }, children);
 
-const jobEntry = (job) =>
+/** One entry of the left column: a tick on the timeline, title, company, dates and optional bullets. */
+const timelineEntry = ({ key, title, company, period, location, bullets = [] }) =>
   h(
     View,
-    { key: `${job.company}-${job.period}`, style: styles.entry, wrap: false },
+    { key, style: styles.entry, wrap: false },
     h(View, { style: styles.tick }),
-    text(styles.title, job.title),
-    text(styles.company, job.company),
-    h(View, { style: styles.metaRow }, text(styles.meta, dash(job.period)), text(styles.meta, job.location)),
-    ...job.highlights.map((line) =>
+    text(styles.title, title),
+    text(styles.company, company),
+    h(View, { style: styles.metaRow }, text(styles.meta, dash(period)), ...(location ? [text(styles.meta, location)] : [])),
+    ...bullets.map((line) =>
       h(View, { key: line, style: styles.bullet }, text(styles.bulletDot, "•"), text(styles.grow, line)),
     ),
   );
 
+const jobEntry = (job) =>
+  timelineEntry({
+    key: `${job.company}-${job.period}`,
+    title: job.title,
+    company: job.company,
+    period: job.period,
+    location: job.location,
+    bullets: job.highlights,
+  });
+
 const educationEntry = (item) =>
-  h(
-    View,
-    { key: item.qualification, style: styles.entry, wrap: false },
-    h(View, { style: styles.tick }),
-    text(styles.title, item.qualification),
-    text(styles.company, item.institution),
-    h(View, { style: styles.metaRow }, text(styles.meta, dash(item.period))),
-  );
+  timelineEntry({ key: item.qualification, title: item.qualification, company: item.institution, period: item.period });
 
 const projectEntry = (project) =>
   h(

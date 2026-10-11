@@ -10,13 +10,13 @@ import { education, skills } from "../content/background.ts";
 import { experience } from "../content/experience.ts";
 import { CV, LINKS, PERSON, SITE_URL } from "../content/person.ts";
 import { alsoProjects, featuredProjects } from "../content/projects.ts";
-import { SERIES_TITLE, articleCountWord } from "../content/writing.ts";
+import { SERIES_TITLE, seriesDescription } from "../content/writing.ts";
 import { withoutScheme } from "./cv/cv-text.mjs";
 import { buildCvDocument } from "./cv/cv-document.mjs";
 
 const OUTPUT_PATH = join("public", CV.path);
 
-const writingNote = `A ${articleCountWord()}-part series on ${SERIES_TITLE}, each part with a working app: ${withoutScheme(LINKS.medium)}`;
+const writingNote = `${seriesDescription(SERIES_TITLE)}: ${withoutScheme(LINKS.medium)}`;
 
 const document = buildCvDocument({
   person: PERSON,

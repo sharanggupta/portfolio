@@ -13,7 +13,7 @@ import ThemeToggle from "./ThemeToggle/ThemeToggle";
 export default function Header() {
   return (
     <>
-      <header className="absolute inset-x-0 top-0 z-30">
+      <header className="absolute inset-x-0 top-0 z-(--z-header)">
         <Container className="flex items-center py-5">
           <a href="#top" className="flex items-center gap-2 font-semibold text-accent motion-safe:animate-fade-in">
             <BrandMark size={30} />

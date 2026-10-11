@@ -6,12 +6,12 @@ import { STAGGER_MS } from "@/lib/motion";
 import Section from "@/components/ui/Section/Section";
 import TextLink from "@/components/ui/TextLink";
 import { LINKS } from "@/content/person";
-import { SECTION, sectionKicker } from "@/content/sections";
-import { SERIES_TITLE, articles, seriesIntro } from "@/content/writing";
+import { SECTION, sectionHeading } from "@/content/sections";
+import { articles } from "@/content/writing";
 
 export default function WritingSection() {
   return (
-    <Section id={SECTION.writing} kicker={sectionKicker(SECTION.writing, "Writing")} title={SERIES_TITLE} intro={seriesIntro()}>
+    <Section {...sectionHeading(SECTION.writing)}>
       <ol className="grid gap-4 sm:grid-cols-2">
         {articles.map((article, index) => {
           const part = index + 1;

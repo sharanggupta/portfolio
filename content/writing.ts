@@ -32,7 +32,12 @@ export function articleCountWord(): string {
   return NUMBER_WORDS[articles.length] ?? String(articles.length);
 }
 
-/** For example "A four-part series, each part with a working app." */
+/** For example "A four-part series on OAuth2, each part with a working app" (no full stop). */
+export function seriesDescription(topic?: string): string {
+  const subject = topic ? ` on ${topic}` : "";
+  return `A ${articleCountWord()}-part series${subject}, each part with a working app`;
+}
+
 export function seriesIntro(): string {
-  return `A ${articleCountWord()}-part series, each part with a working app.`;
+  return `${seriesDescription()}.`;
 }

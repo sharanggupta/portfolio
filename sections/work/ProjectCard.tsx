@@ -2,10 +2,9 @@ import HexPattern from "@/components/brand/HexPattern";
 import ArrowLink from "@/components/ui/ArrowLink";
 import { Card } from "@/components/ui/Card";
 import { TagList } from "@/components/ui/Tag";
-import { repoUrl, type Project } from "@/content/projects";
+import { projectBadge, repoUrl, type Project } from "@/content/projects";
 import styles from "./ProjectCard.module.css";
 
-// The label on the art: the status, or else the first technology.
 const BADGE =
   "absolute bottom-5 left-5 rounded-sm bg-ink/75 px-[0.8rem] py-[0.35rem] text-[1.05rem] font-semibold text-paper backdrop-blur-[6px]";
 
@@ -15,7 +14,7 @@ export default function ProjectCard({ project, artSeed }: { project: Project; ar
     <Card>
       <div className={`${styles.art} relative h-32 overflow-hidden [&_svg]:absolute [&_svg]:inset-0 [&_svg]:size-full`} aria-hidden="true">
         <HexPattern seed={artSeed} />
-        <span className={BADGE}>{project.status ?? project.tags[0]}</span>
+        <span className={BADGE}>{projectBadge(project)}</span>
       </div>
       <div className="flex flex-1 flex-col p-6 pt-4">
         <h3 className="text-lg font-semibold">

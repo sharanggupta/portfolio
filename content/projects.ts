@@ -13,6 +13,11 @@ export type Project = {
   liveUrl?: string;
 };
 
+/** The short label on a project's art: its status, or else its first technology. */
+export function projectBadge(project: Pick<Project, "status" | "tags">): string {
+  return project.status ?? project.tags[0];
+}
+
 export function repoUrl(project: Pick<Project, "repo">): string {
   return `${LINKS.github}/${project.repo}`;
 }

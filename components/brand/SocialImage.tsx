@@ -10,7 +10,14 @@ function Mark({ size }: { size: number }) {
 }
 
 
-/** The 1200x630 picture shown when the site is shared. */
+/** Description and format of the social preview image, shared by the Open Graph and Twitter routes. */
+export const SOCIAL_IMAGE = {
+  alt: `${PERSON.name}, ${PERSON.jobTitle.toLowerCase()}: a hexagon with a passing test`,
+  size: { width: 1200, height: 630 },
+  contentType: "image/png",
+} as const;
+
+/** The picture shown when the site is shared. */
 export function socialImage(): ImageResponse {
   return new ImageResponse(
     (
@@ -43,7 +50,7 @@ export function socialImage(): ImageResponse {
         <Mark size={300} />
       </div>
     ),
-    { width: 1200, height: 630 },
+    { ...SOCIAL_IMAGE.size },
   );
 }
 

@@ -27,6 +27,13 @@
   --cut: 2rem; /* height of the diagonal cuts */
   --hex: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Stacking order of the fixed pieces. The menu button must stay above the open menu. */
+  --z-header: 30;
+  --z-theme-toggle: 40;
+  --z-menu: 50;
+  --z-menu-button: 60;
+  --z-progress: 70;
 }
 :root[data-theme="light"] {
   color-scheme: light;
@@ -40,11 +47,6 @@
     --cut: 3.5rem;
   }
 }
-
-/*
-  Stacking order of the fixed pieces (Tailwind z-* classes): header logo 30, theme toggle 40,
-  open menu 50, menu button 60, reading progress 70. The menu button must stay above the menu.
-*/
 
 /* Shared entrance animations (used as animate-pop-in and animate-fade-in). */
 @keyframes pop-in {

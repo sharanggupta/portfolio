@@ -5,17 +5,11 @@ import Section from "@/components/ui/Section/Section";
 import TextLink from "@/components/ui/TextLink";
 import { openSourceFixes } from "@/content/open-source";
 import { LINKS } from "@/content/person";
-import { SECTION, sectionKicker } from "@/content/sections";
+import { SECTION, sectionHeading } from "@/content/sections";
 
 export default function OpenSourceSection() {
   return (
-    <Section
-      id={SECTION.openSource}
-      tuck
-      kicker={sectionKicker(SECTION.openSource, "Open source")}
-      title="Fixes that landed upstream"
-      intro="Merged pull requests in libraries I use."
-    >
+    <Section {...sectionHeading(SECTION.openSource)} tuck>
       {/* A list, not a table: each row stacks on phones and becomes two columns from "sm" up. */}
       <ul className="border-t border-border">
         {openSourceFixes.map((fix, index) => (

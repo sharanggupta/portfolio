@@ -29,7 +29,8 @@ test.describe("the page", () => {
     await page.goto("/");
     const lastEntry = page.getByRole("heading", { name: /Python Developer \(internship\)/ });
     await expect(lastEntry).toBeVisible();
-    expect(await lastEntry.evaluate((element) => getComputedStyle(element.closest("div")!).opacity)).toBe("1");
+    const revealed = lastEntry.locator("xpath=ancestor::*[@data-reveal][1]");
+    await expect(revealed).toHaveCSS("opacity", "1");
     await context.close();
   });
 });

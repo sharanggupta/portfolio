@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { applyInitialTheme, themeScript } from "./theme-script";
+import { applyInitialTheme, markScriptsRunning, themeScript } from "./theme-script";
 
 const KEY = "theme";
 
@@ -36,11 +36,17 @@ describe("applyInitialTheme", () => {
     expect(document.documentElement.dataset.theme).toBe("light");
   });
 
-  it("marks the page as running scripts, even when storage throws", () => {
+  it("does not throw when storage is blocked", () => {
     vi.spyOn(Storage.prototype, "getItem").mockImplementation(() => {
       throw new Error("blocked");
     });
-    applyInitialTheme(KEY);
+    expect(() => applyInitialTheme(KEY)).not.toThrow();
+  });
+});
+
+describe("markScriptsRunning", () => {
+  it("adds the js class to the page", () => {
+    markScriptsRunning();
     expect(document.documentElement.classList.contains("js")).toBe(true);
   });
 });

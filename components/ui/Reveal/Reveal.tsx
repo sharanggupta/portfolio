@@ -48,7 +48,7 @@ export default function Reveal({
   }, []);
 
   return (
-    <div ref={ref} className={`${styles.reveal} ${className}`} style={cssVar("--delay", `${delay}ms`)}>
+    <div ref={ref} data-reveal className={`${styles.reveal} ${className}`} style={cssVar("--delay", `${delay}ms`)}>
       {children}
     </div>
   );

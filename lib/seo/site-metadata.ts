@@ -1,9 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { BRAND_COLORS } from "@/components/brand/brand-colors";
-import { PERSON, SITE_URL } from "@/content/person";
+import { LANGUAGE, PERSON, SITE_URL } from "@/content/person";
 import { SEO } from "@/content/seo";
 
-const LOCALE = "en_GB";
 const THEME_COLORS = { light: "#ffffff", dark: BRAND_COLORS.background };
 
 /** Next.js builds the <head> (title, description, canonical, social tags) from this. */
@@ -20,7 +19,7 @@ export const siteMetadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: PERSON.name,
-    locale: LOCALE,
+    locale: LANGUAGE.openGraph,
     url: "/",
     title: SEO.title,
     description: SEO.description,

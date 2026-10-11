@@ -1,10 +1,9 @@
 import { THEME_STORAGE_KEY } from "./theme.ts";
 
-/**
- * Runs in the browser before the page paints: applies the saved theme, otherwise the operating
- * system's, and marks <html> with "js" so CSS can tell scripts are running.
- * It must stay self-contained: it is serialised into an inline <script>.
- */
+// Both functions run in the browser before the page paints and are serialised into one inline
+// <script>, so each must be self-contained: no imports, no helpers, only browser globals.
+
+/** Applies the saved theme, otherwise the operating system's. */
 export function applyInitialTheme(storageKey: string): void {
   try {
     let theme = localStorage.getItem(storageKey);
@@ -15,8 +14,12 @@ export function applyInitialTheme(storageKey: string): void {
   } catch {
     // Storage or matchMedia unavailable: the CSS falls back to prefers-color-scheme.
   }
+}
+
+/** Marks <html> with "js", so CSS can tell that scripts are running (see Reveal). */
+export function markScriptsRunning(): void {
   document.documentElement.classList.add("js");
 }
 
 /** The inline script for the document head. */
-export const themeScript = `(${applyInitialTheme.toString()})(${JSON.stringify(THEME_STORAGE_KEY)})`;
+export const themeScript = `(${applyInitialTheme.toString()})(${JSON.stringify(THEME_STORAGE_KEY)});(${markScriptsRunning.toString()})();`;

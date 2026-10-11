@@ -1,5 +1,5 @@
 import { education } from "@/content/background";
-import { LINKS, PERSON, SITE_URL } from "@/content/person";
+import { LANGUAGE, LINKS, PERSON, SITE_URL } from "@/content/person";
 import { SEO } from "@/content/seo";
 
 const PERSON_ID = `${SITE_URL}/#person`;
@@ -22,7 +22,7 @@ export function buildStructuredData() {
           addressLocality: PERSON.locality,
           addressCountry: PERSON.country,
         },
-        alumniOf: { "@type": "CollegeOrUniversity", name: education[0].institution },
+        alumniOf: education.map((item) => ({ "@type": "CollegeOrUniversity", name: item.institution })),
         knowsAbout: SEO.knowsAbout,
         sameAs: [LINKS.github, LINKS.linkedin, LINKS.medium],
       },
@@ -31,7 +31,7 @@ export function buildStructuredData() {
         "@id": WEBSITE_ID,
         url: SITE_URL,
         name: PERSON.name,
-        inLanguage: "en-GB",
+        inLanguage: LANGUAGE.tag,
         publisher: { "@id": PERSON_ID },
       },
     ],

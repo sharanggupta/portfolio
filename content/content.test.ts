@@ -49,8 +49,8 @@ describe("sections", () => {
   });
 
   it("number their kickers in reading order", () => {
-    expect(sectionKicker(SECTION.work, "Work")).toBe("01 · Work");
-    expect(sectionKicker(SECTION.contact, "Contact")).toBe("07 · Contact");
+    expect(sectionKicker(SECTION.work)).toBe("01 · Work");
+    expect(sectionKicker(SECTION.contact)).toBe("07 · Contact");
   });
 });
 

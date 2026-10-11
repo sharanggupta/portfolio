@@ -18,7 +18,7 @@ export default function ThemeToggle() {
   const showSun = theme === "dark";
 
   return (
-    <div className="fixed bottom-[0.9rem] left-[0.9rem] z-40 motion-safe:animate-pop-in motion-safe:[animation-delay:1s] sm:bottom-6 sm:left-6">
+    <div className="fixed bottom-[0.9rem] left-[0.9rem] z-(--z-theme-toggle) motion-safe:animate-pop-in motion-safe:[animation-delay:1s] sm:bottom-6 sm:left-6">
       <button
         type="button"
         onClick={() => applyTheme(oppositeTheme(theme ?? "light"))}

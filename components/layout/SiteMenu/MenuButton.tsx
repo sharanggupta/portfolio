@@ -16,7 +16,7 @@ export default function MenuButton({
   buttonRef: Ref<HTMLButtonElement>;
 }) {
   return (
-    <div className="fixed right-6 top-5 z-60 motion-safe:animate-pop-in motion-safe:[animation-delay:0.7s]">
+    <div className="fixed right-6 top-5 z-(--z-menu-button) motion-safe:animate-pop-in motion-safe:[animation-delay:0.7s]">
       <button
         ref={buttonRef}
         type="button"

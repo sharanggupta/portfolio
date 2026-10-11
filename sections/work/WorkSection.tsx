@@ -2,7 +2,7 @@ import Kicker from "@/components/ui/Kicker";
 import Reveal from "@/components/ui/Reveal/Reveal";
 import { STAGGER_MS } from "@/lib/motion";
 import Section from "@/components/ui/Section/Section";
-import { SECTION, sectionKicker } from "@/content/sections";
+import { SECTION, sectionHeading } from "@/content/sections";
 import { alsoProjects, featuredProjects, type Project } from "@/content/projects";
 import ProjectCard from "./ProjectCard";
 
@@ -22,14 +22,7 @@ function ProjectGrid({ projects, firstArtSeed, className = "" }: { projects: Pro
 
 export default function WorkSection() {
   return (
-    <Section
-      id={SECTION.work}
-      band
-      tuck
-      kicker={sectionKicker(SECTION.work, "Work")}
-      title="Selected work"
-      intro="Small, complete projects, each built test-first to show one idea."
-    >
+    <Section {...sectionHeading(SECTION.work)} band tuck>
       <ProjectGrid projects={featuredProjects} firstArtSeed={0} />
       <Kicker as="h3" className="mt-14">
         Also

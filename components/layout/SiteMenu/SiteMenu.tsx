@@ -53,7 +53,7 @@ export default function SiteMenu({ items }: { items: readonly MenuItem[] }) {
         createPortal(
           <div
             id={MENU_ID}
-            className={`${styles.overlay} fixed inset-0 z-50 flex flex-col items-center justify-center gap-7 overflow-y-auto pb-8 pt-20`}
+            className={`${styles.overlay} fixed inset-0 z-(--z-menu) flex flex-col items-center justify-center gap-7 overflow-y-auto pb-8 pt-20`}
             data-open={open}
             // A div with role="dialog" rather than <dialog>: a native modal dialog would make the menu button inert.
             // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
