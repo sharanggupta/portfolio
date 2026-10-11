@@ -6,8 +6,6 @@ export type Job = {
   period: string;
   location: string;
   highlights: string[];
-  /** Extra impact lines used only in the CV PDF (approved by the user), not on the web page. */
-  cvHighlights?: string[];
 };
 
 export const experience: Job[] = [
@@ -50,8 +48,6 @@ export const experience: Job[] = [
     location: "Mumbai",
     highlights: [
       "Responsible for building data pipelines across multiple web sources like BSE, NSE and electoral rolls via web-scraping using python",
-    ],
-    cvHighlights: [
       "Created over 300 web crawlers, harvesting millions of data points, thus creating end to end data pipelines for consumption",
       "Introduced in-memory download and re-upload of scraped PDFs reducing disk memory usage to a fraction of original",
     ],
@@ -70,7 +66,7 @@ export const experience: Job[] = [
     location: "Pune, India",
     highlights: [
       "Developed a new Non-PE files harvester, to gather 1 million files to whitelist, met the target within 3 months",
-      "Developed a new crawler in record time, for a time-sensitive project involving a lawsuit threat",
+      "Developed a new crawler in record time, for a time-sensitive, high-priority project",
     ],
   },
 ];

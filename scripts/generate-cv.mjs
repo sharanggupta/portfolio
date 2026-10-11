@@ -97,7 +97,7 @@ const jobEntry = (job) =>
     text(s.title, job.title),
     text(s.company, job.company),
     h(View, { style: s.metaRow }, text(s.meta, dash(job.period)), text(s.meta, job.location)),
-    ...[...job.highlights, ...(job.cvHighlights ?? [])].map((line) =>
+    ...job.highlights.map((line) =>
       h(View, { key: line, style: s.bullet }, text(s.bulletDot, "•"), text(s.grow, line)),
     ),
   );
