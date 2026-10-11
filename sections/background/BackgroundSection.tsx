@@ -2,6 +2,7 @@ import Panel from "@/components/ui/Panel";
 import Kicker from "@/components/ui/Kicker";
 import Section from "@/components/ui/Section/Section";
 import Tag from "@/components/ui/Tag";
+import TextLink from "@/components/ui/TextLink";
 import { education, skills } from "@/content/background";
 import { SECTION, sectionHeading } from "@/content/sections";
 
@@ -15,6 +16,11 @@ export default function BackgroundSection() {
             <Kicker>{item.period}</Kicker>
             <p className="mt-2 text-lg font-semibold">{item.qualification}</p>
             <p className="mt-1 text-muted">{item.institution}</p>
+            {item.dissertation && (
+              <p className="mt-2 text-sm">
+                <TextLink href={item.dissertation.url}>{item.dissertation.label}</TextLink>
+              </p>
+            )}
           </Panel>
         ))}
       </ul>
