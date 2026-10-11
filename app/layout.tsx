@@ -2,7 +2,9 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
 import Footer from "@/components/layout/Footer";
+import ReadingProgress from "@/components/layout/ReadingProgress/ReadingProgress";
 import Header from "@/components/layout/Header";
+import { themeScript } from "@/lib/theme/theme-script";
 import JsonLd from "@/components/JsonLd";
 import { PERSON, SITE_URL } from "@/content/person";
 import { SEO } from "@/content/seo";
@@ -43,9 +45,6 @@ export const viewport: Viewport = {
   colorScheme: "light dark",
 };
 
-// Runs before the page paints: apply a saved theme, otherwise follow the operating system.
-const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark"){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add("js")})();`;
-
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en-GB" suppressHydrationWarning>
@@ -54,7 +53,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <JsonLd />
       </head>
       <body>
-        <div className="progress" aria-hidden="true" />
+        <ReadingProgress />
         <Header />
         {children}
         <Footer />

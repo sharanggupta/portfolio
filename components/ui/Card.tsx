@@ -17,5 +17,7 @@ export function Card({ className, ...rest }: ComponentProps<"article">) {
 
 /** The same card, as a single link. */
 export function CardLink({ className, ...rest }: ComponentProps<"a">) {
+  // The caller supplies href and the link text, so the content check cannot see them here.
+  // oxlint-disable-next-line jsx-a11y/anchor-has-content
   return <a data-card className={cx(CARD, className)} {...rest} />;
 }
